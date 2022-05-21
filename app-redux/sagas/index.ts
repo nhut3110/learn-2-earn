@@ -1,5 +1,13 @@
 import { takeLatest } from 'redux-saga/effects';
 
-export default function* root() {
+import { 
+    LOGIN
+} from '@/app-redux/constant/actions';
 
+import { 
+    login 
+} from '@/app-redux/sagas/auth';
+
+export default function* root() {
+    takeLatest(LOGIN, login);
 }

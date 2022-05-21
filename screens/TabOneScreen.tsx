@@ -1,15 +1,45 @@
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import { StyleSheet, TextInput } from 'react-native';
+import { Button } from 'native-base';
+import { Text, View,  } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { 
+    LOGIN
+} from '@/app-redux/constant/actions';
+import { useForm } from 'react-hook-form';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+  const dispatch = useDispatch(); 
+  const { setValue, watch, handleSubmit } = useForm(); 
+  const watchFields = watch();
+
+  const handleLogin = (data: any) => {
+    dispatch({
+      type: LOGIN, 
+      payload: {
+        username: data?.username,
+        password: data?.password,
+      },
+      callback: (err: any, data: any) => {
+        if (err) {
+          console.error(err);
+          return; 
+        }
+        console.log(data);
+      }
+    });
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <TextInput value={watchFields?.username} onChange={(e: any) => setValue('username', e?.target?.value)}>
+
+      </TextInput>
+      <TextInput value={watchFields?.password} onChange={(e: any) => setValue('password', e?.target?.value)}>
+        
+      </TextInput>
+      <Button onClick={handleSubmit((data) => handleLogin(data))}/>
     </View>
   );
 }
