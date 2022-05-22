@@ -23,6 +23,13 @@
       "@/*": ["./*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "typings.d.ts", "jsx", "./app-redux/*.ts"],
+  "include": [
+    "next-env.d.ts", 
+    "**/*.ts", 
+    "**/*.tsx", 
+    "typings.d.ts", 
+    "jsx",
+    "/app-redux/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

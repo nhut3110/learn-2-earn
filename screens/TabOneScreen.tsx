@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { 
     LOGIN
-} from '@/app-redux/constant/actions';
+} from '../app-redux/constant/actions';
 import { useForm } from 'react-hook-form';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {

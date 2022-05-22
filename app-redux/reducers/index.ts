@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { State } from '@/app-redux/entities/state';
+import { State } from '../entities/state';
 import { UserReducer } from './user';
 
 const reducer = combineReducers<State>({
