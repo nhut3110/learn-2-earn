@@ -31,12 +31,12 @@ export default function LoginScreen() {
 
           <VStack space={3} mt="5">
             <FormControl>
-              <FormControl.Label>Email ID</FormControl.Label>
-              <Input backgroundColor="#242547" borderColor="rgb(0, 0, 0)" py={4}/>
+              <FormControl.Label>Username</FormControl.Label>
+              <Input height="52" backgroundColor="#242547" borderColor="#242547" py={4} placeholder="Enter Email" color="white"/>
             </FormControl>
             <FormControl>
               <FormControl.Label>Password</FormControl.Label>
-              <Input type="password" backgroundColor="#242547" borderColor="rgb(0, 0, 0)" py={4}/>
+              <Input height="52" type="password" backgroundColor="#242547" borderColor="#242547" py={4} placeholder="Enter Password" color="white"/>
               <Link _text={{
               fontSize: "xs",
               fontWeight: "500",
