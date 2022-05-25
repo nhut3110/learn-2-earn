@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LoginScreen from '../screens/login.screen';
 import HomeScreen from '../screens/home.screen';
+import PersonalScreen from '../screens/Personal.screen';
+import PesonalDetailScreen from '../screens/PersonalDetails.screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,12 +13,26 @@ export default function MainNavigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen 
+        {/* <Stack.Screen 
           name="Login" 
           component={LoginScreen} 
           options={{
             header: () => null, 
-          }} />
+          }} /> */}
+        <Stack.Screen
+          name="Personal"
+          component={PersonalScreen}
+          options={{
+            header: () => null, 
+          }}
+        />
+        {/* <Stack.Screen
+          name="PersonalDetails"
+          component={PesonalDetailScreen}
+          options={{
+            header: () => null, 
+          }}
+        /> */}
         <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>

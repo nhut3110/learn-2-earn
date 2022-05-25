@@ -32,7 +32,7 @@ export default function LoginScreen() {
           <VStack space={3} mt="5">
             <FormControl>
               <FormControl.Label>Email ID</FormControl.Label>
-              <Input backgroundColor="#242547" borderColor="rgb(0, 0, 0)" py={4}/>
+              <Input backgroundColor="#242547" borderColor="rgb(0, 0, 0)" py={4} />
             </FormControl>
             <FormControl>
               <FormControl.Label>Password</FormControl.Label>
