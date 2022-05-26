@@ -19,7 +19,7 @@ import {
         Circle
         } from "native-base";
 
-const PesonalDetailScreen = () => {
+const ToDoScreen = () => {
   return<Box backgroundColor="#171930" w="100%" h="100%" >
           <HStack justifyContent="space-between" alignItems ="center" mt="20">
             <Text fontSize="4xl" _light={{
@@ -354,7 +354,7 @@ const PesonalDetailScreen = () => {
     export default () => {
         return (
           <NativeBaseProvider>
-                <PesonalDetailScreen/>
+                <ToDoScreen/>
           </NativeBaseProvider>
         );
     };
