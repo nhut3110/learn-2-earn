@@ -53,7 +53,7 @@ const ToDoScreen = () => {
                           <Heading fontSize="3xl" color="#FFF" fontWeight="500" >
                             Search
                           </Heading>
-                          <Input placeholder="Search" variant="filled" width="100%" borderRadius="10" py="1" px="2" borderWidth="1" bg="darkBlue.800"
+                          <Input placeholder="Search" variant="filled" width="100%" h="10" borderRadius="10" py="1" px="2" borderWidth="1" fontSize="lg" bg="darkBlue.800" color="#ffff"
                           InputLeftElement={<Icon ml="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />} />
                             <Box mt="5">
                               <ScrollView h="500">
