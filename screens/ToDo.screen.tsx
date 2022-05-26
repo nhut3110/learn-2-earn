@@ -1,4 +1,5 @@
 import React from "react";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { 
         Box,
         Heading, 
@@ -16,10 +17,19 @@ import {
         AddIcon,
         CheckCircleIcon,
         InfoIcon,
-        Circle
+        Circle,
+        Input,
+        Icon,
+        useDisclose,
+        Actionsheet
         } from "native-base";
 
 const ToDoScreen = () => {
+  const {
+    isOpen,
+    onOpen,
+    onClose
+  } = useDisclose();
   return<Box backgroundColor="#171930" w="100%" h="100%" >
           <HStack justifyContent="space-between" alignItems ="center" mt="20">
             <Text fontSize="4xl" _light={{
@@ -30,9 +40,77 @@ const ToDoScreen = () => {
                 ToDo
             </Text>
             <Box>
-              <HStack space={5} mr="5">
-                 <SearchIcon size="6" color="#FFFF"/>
-                 <AddIcon size="6" color="#FFFF"/>
+              <HStack space={5} mr="5" mt="-2">
+                 <Center>
+                  <Button onPress={onOpen} bg="transparent">
+                    <SearchIcon size="6" color="#FFFF"/>
+                  </Button>
+                  <Actionsheet isOpen={isOpen} onClose={onClose}>
+                    <Actionsheet.Content bg="#171930" _dragIndicatorWrapperOffSet={{
+                  }}>
+                      <Box w="100%" h={700} px={4} justifyContent="center">
+                        <VStack w="100%" h="100%" space={5}>
+                          <Heading fontSize="3xl" color="#FFF" fontWeight="500" >
+                            Search
+                          </Heading>
+                          <Input placeholder="Search" variant="filled" width="100%" borderRadius="10" py="1" px="2" borderWidth="1" bg="darkBlue.800"
+                          InputLeftElement={<Icon ml="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />} />
+                            <Box mt="5">
+                              <ScrollView h="500">
+                                <VStack space={4} justifyContent="center" alignItems="center" mt="5">
+                                  <Box w="95%" h="20" justifyContent="center" bg="#1E203B" borderRadius="15" shadow={3}>
+                                    
+                                      <Text fontSize="2xl" position="absolute" left="0"  _light={{
+                                        color: "blueGray.50"
+                                      }} _dark={{
+                                        color: "blueGray.50"
+                                      }} fontWeight="400" ml="5">
+                                          Daily Meeting with the team
+                                      </Text>
+                                  </Box>
+                                  <Box w="95%" h="20" justifyContent="center" bg="#1E203B" borderRadius="15" shadow={3}>
+                                    
+                                      <Text fontSize="2xl" position="absolute" left="0"  _light={{
+                                        color: "blueGray.50"
+                                      }} _dark={{
+                                        color: "blueGray.50"
+                                      }} fontWeight="400" ml="5">
+                                          Completing the prototype
+                                      </Text>
+                                  </Box>
+                                  <Box w="95%" h="20" justifyContent="center" bg="#1E203B" borderRadius="15" shadow={3}>
+                                    
+                                      <Text fontSize="2xl" position="absolute" left="0"  _light={{
+                                        color: "blueGray.50"
+                                      }} _dark={{
+                                        color: "blueGray.50"
+                                      }} fontWeight="400" ml="5">
+                                          Hang out with girlfriend and eat her
+                                      </Text>
+                                  </Box>
+                                  <Box w="95%" h="20" justifyContent="center" bg="#1E203B" borderRadius="15" shadow={3}>
+                                    
+                                      <Text fontSize="2xl" position="absolute" left="0"  _light={{
+                                        color: "blueGray.50"
+                                      }} _dark={{
+                                        color: "blueGray.50"
+                                      }} fontWeight="400" ml="5">
+                                          Figma iz da best
+                                      </Text>
+                                  </Box>
+                                </VStack>
+                              </ScrollView>
+                            </Box>
+                      </VStack>
+                      </Box>
+                    </Actionsheet.Content>
+                  </Actionsheet>
+                </Center>
+
+                <Button onPress={onOpen} bg="transparent">
+                    <AddIcon size="6" color="#FFFF"/>
+                  </Button>
+
               </HStack>
             </Box>
           </HStack>

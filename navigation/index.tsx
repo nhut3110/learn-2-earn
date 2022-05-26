@@ -19,20 +19,20 @@ export default function MainNavigation() {
           options={{
             header: () => null, 
           }} /> */}
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Personal"
           component={PersonalScreen}
           options={{
             header: () => null, 
           }}
-        />
-        {/* <Stack.Screen
+        /> */}
+        <Stack.Screen
           name="ToDo"
           component={ToDoScreen}
           options={{
             header: () => null, 
           }}
-        /> */}
+        />
         <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
