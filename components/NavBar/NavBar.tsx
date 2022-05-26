@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   NativeBaseProvider, 
-  Box, 
+  Box,
   Text,
   Icon, 
   HStack, 
@@ -20,9 +20,8 @@ export default function NavBar(){
     return(
         <NativeBaseProvider>
             <Center flex={1}>
-                <Box flex={1} safeAreaTop width="100%" alignSelf="center">
                 <Center flex={1}></Center>
-                <HStack bg="#0D0F22" alignItems="center" safeAreaBottom shadow={6}>
+                <HStack position="absolute" bottom={0} bg="#0D0F22" alignItems="center" safeAreaBottom shadow={6}>
                     <Pressable opacity={selected === 0 ? 1 : 0.5} py="3" flex={1} onPress={() => setSelected(0)}>
                     <Center>
                         <Icon mb="1" as={<Ionicons name={selected === 0 ? "stats-chart" : "stats-chart-outline"} />} color="white" size="7" />
@@ -56,7 +55,6 @@ export default function NavBar(){
                     </Center>
                     </Pressable>
                 </HStack>
-                </Box>
             </Center>
         </NativeBaseProvider>
     )
