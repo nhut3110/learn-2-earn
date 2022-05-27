@@ -37,23 +37,23 @@ const AnimatedCheckbox = (props: Props) => {
     });
   }, [checked]);
 
-  const animatedBoxProps = useAnimatedProps(
-    () => ({
-      stroke: interpolateColor(
-        Easing.bezier(0.16, 1, 0.3, 1)(progress.value),
-        [0, 1],
-        [boxOutlineColor, highlightColor],
-        "RGB"
-      ),
-      fill: interpolateColor(
-        Easing.bezier(0.16, 1, 0.3, 1)(progress.value),
-        [0, 1],
-        ["#00000000", highlightColor],
-        "RGB"
-      ),
-    }),
-    [highlightColor, boxOutlineColor]
-  );
+  // const animatedBoxProps = useAnimatedProps(
+  //   () => ({
+  //     stroke: interpolateColor(
+  //       Easing.bezier(0.16, 1, 0.3, 1)(progress.value),
+  //       [0, 1],
+  //       [boxOutlineColor, highlightColor],
+  //       "RGB"
+  //     ),
+  //     fill: interpolateColor(
+  //       Easing.bezier(0.16, 1, 0.3, 1)(progress.value),
+  //       [0, 1],
+  //       ["#00000000", highlightColor],
+  //       "RGB"
+  //     ),
+  //   }),
+  //   [highlightColor, boxOutlineColor]
+  // );
 
   return (
     <Svg
@@ -64,7 +64,7 @@ const AnimatedCheckbox = (props: Props) => {
         strokeWidth={7}
         strokeLinecap="round"
         strokeLinejoin="round"
-        animatedProps={animatedBoxProps}
+        // animatedProps={animatedBoxProps}
       />
       <Path d={checkMarkPath} stroke="black" />
     </Svg>
