@@ -16,18 +16,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-native",
-    "incremental": true, 
+    "incremental": true,
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
+      "@/*": ["./*"]
     }
   },
   "include": [
-    "next-env.d.ts", 
-    "**/*.ts", 
-    "**/*.tsx", 
-    "typings.d.ts", 
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "typings.d.ts",
     "jsx",
     "/app-redux/*.ts"
   ],

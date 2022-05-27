@@ -9,6 +9,8 @@ import {
   useColorMode,
   useColorModeValue,
 } from "native-base";
+import ThemeToggle from "./theme-toggle";
+import AnimatedCheckbox from "./animated-checkbox";
 
 export default function TodoMainScreen() {
   return (
@@ -19,9 +21,13 @@ export default function TodoMainScreen() {
       flex={1}
     >
       <VStack space={5} alignItems="center">
-        <Box>
+        <Box w="100px" h="100px">
+          <AnimatedCheckbox />
+        </Box>
+        <Box p={10} bg={useColorModeValue("red.500", "yellow.500")}>
           <Text>Hello</Text>
         </Box>
+        <ThemeToggle />
       </VStack>
     </Center>
   );

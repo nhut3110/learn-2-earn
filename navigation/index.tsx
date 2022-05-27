@@ -18,7 +18,13 @@ export default function MainNavigation() {
           options={{
             header: () => null, 
           }} /> */}
-        <Stack.Screen name="Todo" component={TodoScreen} />
+        <Stack.Screen
+          name="Todo"
+          component={TodoScreen}
+          options={{
+            header: () => null,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
