@@ -24,14 +24,11 @@ import {
 
 import { 
   AntDesign,
+  MaterialCommunityIcons,
+  Entypo,
 } from "@expo/vector-icons";
 
 import NavBar from '../components/NavBar/NavBar';
-
-
-const circleLength = 700;
-const {width, height} = Dimensions.get('window');
-const R = circleLength/(2 * Math.PI);
     
 export default function HomeScreen() {
   // const progress = useSharedValue(0)
@@ -39,18 +36,18 @@ export default function HomeScreen() {
   return (
     <NativeBaseProvider>
 
-      <Box width="100%" alignSelf="center" backgroundColor="#171930">
+      <Box w="100%" h="100%" alignSelf="center" backgroundColor="#171930">
         <Center w="100%" mt="20">
           <Box w="100%">
             <VStack space={2.5} w="100%">
               <Flex direction="row" px="5">
-                <Heading 
+                <Heading
                   size={"xl"} 
                   fontWeight="600"
-                  color="#FFFFFF" 
+                  color="#FFFFFF"
                   _dark={{
                     color: "#FFFFFF"
-                  }}>Your Credits</Heading>
+                  }}>Your Credits</Heading> 
                 <Spacer/>
                 <Pressable>
                   <Icon mb="1" as={<AntDesign name={"creditcard"} />} color="white" size="8" />
@@ -59,31 +56,34 @@ export default function HomeScreen() {
                   <Icon mb="1" ml="5" as={<AntDesign name={"plus"} />} color="white" size="8" />
                 </Pressable>
               </Flex>
-              
-              {/* <Flex width="100%" height="80%" backgroundColor="white" alignSelf="center">
-                  <Svg>
-                  </Svg>
-              </Flex> */}
-              {/* <Svg style={styles.container}>
-            <Circle
-              cx={width/2}
-              cy={height/2}
-              r={R}
-              stroke="#54566E"
-              strokeWidth={30}
-            />
+              <Flex w="300" h="300" alignSelf="center" my="5">
+                <Svg style={styles.container}>
+                  <Circle
+                  cx={150}
+                  cy={150}
+                  r={120}
+                  stroke="#54566E"
+                  strokeWidth={35}/>
 
-            <Circle
-              cx={width/2}
-              cy={height/2}
-              r={R}
-              stroke="#654EA3"
-              strokeWidth={30}
-              strokeDasharray={circleLength/2}
-              strokeDashoffset={circleLength * 0.75}
-            />
-          </Svg> */}
-              {/* <Flex direction="column">
+                  <Circle
+                  cx={150}
+                  cy={150}
+                  r={120}
+                  stroke="#654EA3"
+                  strokeWidth={35}
+                  strokeDasharray={500}
+                  strokeDashoffset={1000 * 0.8}/>
+                </Svg>
+
+                <Flex direction="row" alignSelf="center" width="70%">
+                  <Icon mb="1" as={<MaterialCommunityIcons name={"moon-full"} />} color="#654EA3" size="5" />
+                  <Text color="white">Balance</Text>
+                  <Spacer/>
+                  <Icon mb="1" as={<MaterialCommunityIcons name={"moon-full"} />} color="#54566E" size="5" />
+                  <Text color="white">Spent</Text>
+                </Flex>
+              </Flex>
+              <Flex direction="column">
                 <Heading
                   px="5"
                   py="5"
@@ -95,28 +95,33 @@ export default function HomeScreen() {
                   }}>Activity History</Heading>
                 <ScrollView
                   maxW="100%"
-                  h="80%"
+                  h="80"
                   _contentContainerStyle={{
                     px: "20px",
                     mb: "4",
                     minW: "72"
                 }}>
-                  <VStack flex="1" space={4} alignItems="center">
-                    <Center w="100%" h="20" bg="indigo.300" rounded="md" shadow={3} />
-                    <Center w="100%" h="20" bg="indigo.500" rounded="md" shadow={3} />
-                    <Center w="100%" h="20" bg="indigo.700" rounded="md" shadow={3} />
-                    <Center w="100%" h="20" bg="indigo.700" rounded="md" shadow={3} />
-                    <Center w="100%" h="20" bg="indigo.700" rounded="md" shadow={3} />
-                    <Center w="100%" h="20" bg="indigo.700" rounded="md" shadow={3} />
-                    <Center w="100%" h="20" bg="indigo.700" rounded="md" shadow={3} />
-                    <Center w="100%" h="20" bg="indigo.700" rounded="md" shadow={3} />
-                    <Center w="100%" h="20" bg="indigo.700" rounded="md" shadow={3} />
-                    <Center w="100%" h="20" bg="indigo.700" rounded="md" shadow={3} />
-                    <Center w="100%" h="20" bg="indigo.700" rounded="md" shadow={3} />
+                  <VStack flex="1" space={5} alignItems="center" mb="0.5">
+                    <Button
+                      colorScheme="primary"
+                      w="100%" 
+                      h="100%"
+                      leftIcon={<Icon mb="1" as={<Entypo name="credit"/>} color="white" size = "10"/>}
+                      rightIcon={<Icon mb="1" as={<Entypo name="chevron-thin-right"/>} color="white" size = "10"/>}>
+                        <Flex direction="row" w="100%" justifyContent="flex-start">
+                          <Box mr="10">
+                            <Text color='#fff' fontWeight="700">Recieve</Text>
+                            <Text color="#54566E">May 11 | From: 0xa7a...</Text>
+                          </Box>
+                          <Box>
+                            <Text color='#fff' fontWeight="600">0.05 ETH</Text>
+                            <Text color="#54566E">10:20 AM</Text>
+                          </Box>
+                        </Flex>
+                    </Button>
                   </VStack>
                 </ScrollView>
-              </Flex> */}
-            <Box h="90%" backgroundColor="#171930"></Box>
+              </Flex>
             </VStack>
           </Box>
         </Center>
@@ -130,7 +135,10 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     // justifyContent: 'center',
-    marginBottom: -50,
+    // width: 400,
+    // height: 400,
+    alignSelf: 'center',
+    backgroundColor: '#171930',
     // marginTop: -50,
   },
 });
