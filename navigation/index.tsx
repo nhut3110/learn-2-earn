@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '../screens/login.screen';
 import HomeScreen from '../screens/home.screen';
 import PersonalScreen from '../screens/Personal.screen';
+import MarketScreen from '@/screens/Market/Market.screen';
 import ToDoScreen from '../screens/ToDo.screen';
 
 const Stack = createNativeStackNavigator();
@@ -26,12 +27,19 @@ export default function MainNavigation() {
             header: () => null, 
           }}
         /> */}
-        <Stack.Screen
+        {/* <Stack.Screen
           name="ToDo"
           component={ToDoScreen}
           options={{
             header: () => null, 
           }}
+        /> */}
+        <Stack.Screen
+        name="Market"
+        component={MarketScreen}
+        options={{
+          header: () => null, 
+        }}
         />
         <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>

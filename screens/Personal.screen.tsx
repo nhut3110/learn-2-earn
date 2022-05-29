@@ -120,7 +120,7 @@ const PesonalScreen = () => {
             <Heading size="md" ml="-1" color="warmGray.50">
               Inventory
             </Heading>
-            <ScrollView maxW="100%" h="250" _contentContainerStyle={{
+            <ScrollView maxW="100%" h="250" showsVerticalScrollIndicator={false} _contentContainerStyle={{
           px: "20px",
           mb: "4",
           minW: "72"

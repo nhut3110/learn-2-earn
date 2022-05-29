@@ -298,7 +298,7 @@ const ToDoScreen = () => {
               </HStack>
             </ScrollView>
           </Box>
-          <ScrollView>
+          <ScrollView showsVerticalScrollIndicator={false}>
           <Box mt="5">
             <Text fontSize="2xl" _light={{
               color: "blueGray.50"
