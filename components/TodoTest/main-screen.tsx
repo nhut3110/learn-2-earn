@@ -6,17 +6,17 @@ import TaskList from "./task-list";
 import Masthead from "./masthead";
 import "react-native-get-random-values";
 import { nanoid } from "nanoid";
-import NavBar from "./navbar";
+import ThemeToggle from "./theme-toggle";
 
 const initialData = [
   {
     id: nanoid(10),
-    subject: "Buy movie tickets for Friday",
+    subject: "Eat my friend's chick next week",
     done: false,
   },
   {
     id: nanoid(10),
-    subject: "Make a React Native tutorial",
+    subject: "Kill a gay on Monday",
     done: false,
   },
 ];
@@ -66,7 +66,7 @@ export default function MainScreen() {
       bg={useColorModeValue("warmGray.50", "primary.900")}
       w="full"
     >
-      <Masthead title="hehe nigga!" image={require("./assets/masthead.png")}>
+      <Masthead title="" image={require("./assets/ganyu.jpg")}>
         {/* <NavBar /> */}
       </Masthead>
       <VStack
@@ -108,6 +108,7 @@ export default function MainScreen() {
           setEditingItemId(id);
         }}
       />
+      <ThemeToggle />
     </AnimatedColorBox>
   );
 }

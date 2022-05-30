@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react'
-import { PanGestureHandlerProps } from 'react-native-gesture-handler'
-import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native'
+import React, { useCallback } from "react";
+import { PanGestureHandlerProps } from "react-native-gesture-handler";
+import { NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
 import {
   Pressable,
   Box,
@@ -8,22 +8,22 @@ import {
   useColorModeValue,
   Icon,
   Input,
-  useToken
-} from 'native-base'
-import AnimatedCheckbox from 'react-native-checkbox-reanimated'
-import AnimatedTaskLabel from './animated-task-label'
-import SwipableView from './swipable-view'
-import { Feather } from '@expo/vector-icons'
+  useToken,
+} from "native-base";
+import AnimatedCheckbox from "react-native-checkbox-reanimated";
+import AnimatedTaskLabel from "./animated-task-label";
+import SwipableView from "./swipable-view";
+import { Feather } from "@expo/vector-icons";
 
-interface Props extends Pick<PanGestureHandlerProps, 'simultaneousHandlers'> {
-  isEditing: boolean
-  isDone: boolean
-  onToggleCheckbox?: () => void
-  onPressLabel?: () => void
-  onRemove?: () => void
-  onChangeSubject?: (subject: string) => void
-  onFinishEditing?: () => void
-  subject: string
+interface Props extends Pick<PanGestureHandlerProps, "simultaneousHandlers"> {
+  isEditing: boolean;
+  isDone: boolean;
+  onToggleCheckbox?: () => void;
+  onPressLabel?: () => void;
+  onRemove?: () => void;
+  onChangeSubject?: (subject: string) => void;
+  onFinishEditing?: () => void;
+  subject: string;
 }
 
 const TaskItem = (props: Props) => {
@@ -36,35 +36,38 @@ const TaskItem = (props: Props) => {
     onRemove,
     onChangeSubject,
     onFinishEditing,
-    simultaneousHandlers
-  } = props
+    simultaneousHandlers,
+  } = props;
 
   const highlightColor = useToken(
-    'colors',
-    useColorModeValue('blue.500', 'blue.400')
-  )
+    "colors",
+    useColorModeValue("purple.300", "green.500")
+  );
   const boxStroke = useToken(
-    'colors',
-    useColorModeValue('muted.300', 'muted.500')
-  )
+    "colors",
+    useColorModeValue("muted.500", "muted.300")
+  );
 
-  const checkmarkColor = useToken('colors', useColorModeValue('white', 'white'))
+  const checkmarkColor = useToken(
+    "colors",
+    useColorModeValue("white", "white")
+  );
 
   const activeTextColor = useToken(
-    'colors',
-    useColorModeValue('darkText', 'lightText')
-  )
+    "colors",
+    useColorModeValue("darkText", "lightText")
+  );
   const doneTextColor = useToken(
-    'colors',
-    useColorModeValue('muted.400', 'muted.600')
-  )
+    "colors",
+    useColorModeValue("muted.400", "muted.600")
+  );
 
   const handleChangeSubject = useCallback(
     (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
-      onChangeSubject && onChangeSubject(e.nativeEvent.text)
+      onChangeSubject && onChangeSubject(e.nativeEvent.text);
     },
     [onChangeSubject]
-  )
+  );
 
   return (
     <SwipableView
@@ -88,7 +91,7 @@ const TaskItem = (props: Props) => {
         w="full"
         px={4}
         py={2}
-        bg={useColorModeValue('warmGray.50', 'primary.900')}
+        bg={useColorModeValue("warmGray.50", "primary.900")}
       >
         <Box width={30} height={30} mr={2}>
           <Pressable onPress={onToggleCheckbox}>
@@ -125,7 +128,7 @@ const TaskItem = (props: Props) => {
         )}
       </HStack>
     </SwipableView>
-  )
-}
+  );
+};
 
-export default TaskItem
+export default TaskItem;
