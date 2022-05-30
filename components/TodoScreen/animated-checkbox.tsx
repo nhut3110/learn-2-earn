@@ -1,12 +1,14 @@
-import React, { useEffect, memo } from "react";
+import React, { useEffect } from "react";
 import Animated, {
   Easing,
   useSharedValue,
   useAnimatedProps,
   withTiming,
   interpolateColor,
+  interpolateColors,
 } from "react-native-reanimated";
 import Svg, { Path, Defs, ClipPath, G } from "react-native-svg";
+import AnimatedStroke from "./animated-stroke";
 
 const MARGIN = 10;
 const vWidth = 64 + MARGIN;
@@ -27,6 +29,9 @@ interface Props {
 
 const AnimatedCheckbox = (props: Props) => {
   const { checked, checkmarkColor, highlightColor, boxOutlineColor } = props;
+  // const checkmarkColor = "#000000";
+  // const highlightColor = "#ff0000";
+  // const boxOutlineColor = "#000000";
 
   const progress = useSharedValue(0);
 
@@ -37,36 +42,66 @@ const AnimatedCheckbox = (props: Props) => {
     });
   }, [checked]);
 
-  // const animatedBoxProps = useAnimatedProps(
-  //   () => ({
-  //     stroke: interpolateColor(
-  //       Easing.bezier(0.16, 1, 0.3, 1)(progress.value),
-  //       [0, 1],
-  //       [boxOutlineColor, highlightColor],
-  //       "RGB"
-  //     ),
-  //     fill: interpolateColor(
-  //       Easing.bezier(0.16, 1, 0.3, 1)(progress.value),
-  //       [0, 1],
-  //       ["#00000000", highlightColor],
-  //       "RGB"
-  //     ),
-  //   }),
-  //   [highlightColor, boxOutlineColor]
-  // );
+  const animatedBoxProps = useAnimatedProps(
+    () => ({
+      stroke: interpolateColor(
+        Easing.bezierFn(0.16, 1, 0.3, 1)(progress.value),
+        [0, 1],
+        [boxOutlineColor, highlightColor],
+        "RGB"
+      ),
+      fill: interpolateColor(
+        Easing.bezierFn(0.16, 1, 0.3, 1)(progress.value),
+        [0, 1],
+        ["#00000000", highlightColor],
+        "RGB"
+      ),
+    }),
+    [highlightColor, boxOutlineColor]
+  );
 
   return (
     <Svg
       viewBox={[-MARGIN, -MARGIN, vWidth + MARGIN, vHeight + MARGIN].join(" ")}
     >
+      <Defs>
+        <ClipPath id="clipPath">
+          <Path
+            fill="white"
+            stroke="gray"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            d={outlineBoxPath}
+          />
+        </ClipPath>
+      </Defs>
+      <AnimatedStroke
+        progress={progress}
+        d={checkMarkPath}
+        stroke={highlightColor}
+        strokeWidth={10}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        strokeOpacity={checked || false ? 1 : 0}
+      />
       <AnimatedPath
         d={outlineBoxPath}
         strokeWidth={7}
-        strokeLinecap="round"
         strokeLinejoin="round"
-        // animatedProps={animatedBoxProps}
+        strokeLinecap="round"
+        animatedProps={animatedBoxProps}
       />
-      <Path d={checkMarkPath} stroke="black" />
+      <G clipPath="url(#clipPath)">
+        <AnimatedStroke
+          progress={progress}
+          d={checkMarkPath}
+          stroke={checkmarkColor}
+          strokeWidth={10}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          strokeOpacity={checked || false ? 1 : 0}
+        />
+      </G>
     </Svg>
   );
 };
