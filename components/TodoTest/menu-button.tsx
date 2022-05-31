@@ -1,11 +1,11 @@
-import React from 'react'
-import { Button, Icon, IButtonProps } from 'native-base'
-import { Feather } from '@expo/vector-icons'
+import React from "react";
+import { Button, Icon, IButtonProps, useColorModeValue } from "native-base";
+import { Feather } from "@expo/vector-icons";
 
 interface Props extends IButtonProps {
-  active: boolean
-  icon: string
-  children: React.ReactNode
+  active: boolean;
+  icon: string;
+  children: React.ReactNode;
 }
 
 const MenuButton = ({ active, icon, children, ...props }: Props) => {
@@ -13,32 +13,40 @@ const MenuButton = ({ active, icon, children, ...props }: Props) => {
     <Button
       size="lg"
       _light={{
-        colorScheme: 'blue',
+        colorScheme: "blue",
         _pressed: {
-          bg: 'primary.100'
+          bg: "primary.100",
         },
         _text: {
-          color: active ? 'blue.50' : 'blue.500'
-        }
+          color: active ? "blue.50" : "blue.500",
+        },
       }}
       _dark={{
-        colorScheme: 'darkBlue',
+        colorScheme: "darkBlue",
         _pressed: {
-          bg: 'primary.600'
+          bg: "primary.600",
         },
         _text: {
-          color: active ? 'blue.50' : undefined
-        }
+          color: active ? "blue.50" : undefined,
+        },
       }}
-      bg={active ? undefined : 'transparent'}
+      bg={active ? undefined : "transparent"}
       variant="solid"
       justifyContent="flex-start"
-      leftIcon={<Icon as={Feather} name={icon} size="sm" opacity={0.5} />}
+      leftIcon={
+        <Icon
+          color={useColorModeValue("black", "white")}
+          as={Feather}
+          name={icon}
+          size="sm"
+          opacity={0.5}
+        />
+      }
       {...props}
     >
       {children}
     </Button>
-  )
-}
+  );
+};
 
-export default MenuButton
+export default MenuButton;

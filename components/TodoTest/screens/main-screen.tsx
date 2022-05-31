@@ -1,12 +1,13 @@
 import React, { useCallback, useState } from "react";
 import { Icon, VStack, useColorModeValue, Fab, Box } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
-import AnimatedColorBox from "./animated-color-box";
-import TaskList from "./task-list";
-import Masthead from "./masthead";
+import NavBar from "../navbar";
+import AnimatedColorBox from "../animated-color-box";
+import TaskList from "../task-list";
+import Masthead from "../masthead";
 import "react-native-get-random-values";
 import { nanoid } from "nanoid";
-import ThemeToggle from "./theme-toggle";
+import ThemeToggle from "../theme-toggle";
 
 const initialData = [
   {
@@ -67,8 +68,11 @@ export default function MainScreen() {
       w="full"
     >
       {/* <Box bg="purple.500"></Box> */}
-      <Masthead title="" image={require("./assets/ganyu.jpg")}>
-        {/* <NavBar /> */}
+      <Masthead
+        title="What's up?"
+        image={require("../assets/about-masthead.png")}
+      >
+        <NavBar />
       </Masthead>
 
       <VStack
@@ -110,7 +114,6 @@ export default function MainScreen() {
           setEditingItemId(id);
         }}
       />
-      <ThemeToggle />
     </AnimatedColorBox>
   );
 }

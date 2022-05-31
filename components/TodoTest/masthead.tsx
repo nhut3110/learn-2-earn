@@ -1,11 +1,11 @@
-import React from 'react'
-import { ImageSourcePropType } from 'react-native'
-import { Box, VStack, Heading, Image } from 'native-base'
+import React from "react";
+import { ImageSourcePropType } from "react-native";
+import { Box, VStack, Heading, Image, useColorModeValue } from "native-base";
 
 interface Props {
-  title: string
-  image: ImageSourcePropType
-  children: React.ReactNode
+  title: string;
+  image: ImageSourcePropType;
+  children: React.ReactNode;
 }
 
 const Masthead = ({ title, image, children }: Props) => {
@@ -24,11 +24,11 @@ const Masthead = ({ title, image, children }: Props) => {
       />
       {children}
       <Box flex={1} />
-      <Heading color="white" p={6} size="xl">
+      <Heading color={"white"} p={6} size="xl">
         {title}
       </Heading>
     </VStack>
-  )
-}
+  );
+};
 
-export default Masthead
+export default Masthead;
