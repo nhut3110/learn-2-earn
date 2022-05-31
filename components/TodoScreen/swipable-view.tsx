@@ -4,6 +4,7 @@ import {
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
   PanGestureHandlerProps,
+  GestureHandlerRootView,
 } from "react-native-gesture-handler";
 import Animated, {
   useAnimatedGestureHandler,
@@ -33,14 +34,17 @@ const SwipeView = (props: Props) => {
   const panGesture = useAnimatedGestureHandler<PanGestureHandlerGestureEvent>({
     onActive: (event) => {
       translateX.value = Math.max(-128, Math.min(0, event.translationX));
+      console.log("swipe");
     },
     onEnd: () => {
       const shouldBeDismissed = translateX.value < SWIPE_THRESHOLD;
       if (shouldBeDismissed) {
+        console.log("swipe fail");
         translateX.value = withTiming(-SCREEN_WIDTH);
         onSwipeLeft && runOnJS(onSwipeLeft)();
       } else {
         translateX.value = withTiming(0);
+        console.log("swipe end");
       }
     },
   });
@@ -54,19 +58,21 @@ const SwipeView = (props: Props) => {
   }));
 
   return (
-    <StyledView w="full">
-      {backView && (
-        <Box position="absolute" left={0} right={0} top={0} bottom={0}>
-          {backView}
-        </Box>
-      )}
-      <PanGestureHandler
-        simultaneousHandlers={simultaneousHandlers}
-        onGestureEvent={panGesture}
-      >
-        <StyledView style={facadeStyle}>{children}</StyledView>
-      </PanGestureHandler>
-    </StyledView>
+    <GestureHandlerRootView>
+      <StyledView w="full">
+        {backView && (
+          <Box position="absolute" left={0} right={0} top={0} bottom={0}>
+            {backView}
+          </Box>
+        )}
+        <PanGestureHandler
+          simultaneousHandlers={simultaneousHandlers}
+          onGestureEvent={panGesture}
+        >
+          <StyledView style={facadeStyle}>{children}</StyledView>
+        </PanGestureHandler>
+      </StyledView>
+    </GestureHandlerRootView>
   );
 };
 
