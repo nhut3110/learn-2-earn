@@ -17,13 +17,15 @@ interface Props {
   uri?: string;
   description?: string;
   time: string;
+  tag?: string;
 }
 const ActivityBox = (props: Props) => {
-  const { activityName, owner, uri, description, time } = props;
+  const { activityName, owner, uri, description, time, tag } = props;
   return (
     <Box alignItems="center">
       <Box
-        maxW="80"
+        maxW="150px"
+        m={2}
         rounded="lg"
         overflow="hidden"
         borderColor="coolGray.200"
@@ -44,7 +46,11 @@ const ActivityBox = (props: Props) => {
           <AspectRatio w="100%" ratio={16 / 9}>
             <Image
               source={{
-                uri: "https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg",
+                // uri: "https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg",
+                uri:
+                  uri == ""
+                    ? "https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg"
+                    : uri,
               }}
               alt="image"
             />
@@ -64,11 +70,11 @@ const ActivityBox = (props: Props) => {
             px="3"
             py="1.5"
           >
-            PHOTOS
+            {tag == "" ? "TAG" : tag}
           </Center>
         </Box>
-        <Stack p="4" space={3}>
-          <Stack space={2}>
+        <Stack p="4" space={1}>
+          <Stack space={1}>
             <Heading size="md" ml="-1">
               {activityName}
             </Heading>
@@ -87,7 +93,9 @@ const ActivityBox = (props: Props) => {
               {owner}
             </Text>
           </Stack>
-          <Text fontWeight="400">{description}</Text>
+          <Text fontWeight="400" isTruncated numberOfLines={3}>
+            {description}
+          </Text>
           <HStack alignItems="center" space={4} justifyContent="space-between">
             <HStack alignItems="center">
               <Text

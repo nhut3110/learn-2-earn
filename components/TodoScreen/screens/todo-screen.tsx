@@ -100,7 +100,7 @@ export default function MainScreen() {
         size="sm"
         icon={<Icon color="white" as={<AntDesign name="plus" />} size="sm" />}
         colorScheme={useColorModeValue("blue", "darkBlue")}
-        bg={useColorModeValue("blue.500", "blue.400")}
+        bg={useColorModeValue("purple.600", "green.500")}
         onPress={() => {
           const id = nanoid(10);
           setData([
