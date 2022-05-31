@@ -1,40 +1,40 @@
-import React, { useCallback, useRef } from 'react'
-import { AnimatePresence, View } from 'moti'
+import React, { useCallback, useRef } from "react";
+import { AnimatePresence, View } from "moti";
 import {
   PanGestureHandlerProps,
-  ScrollView
-} from 'react-native-gesture-handler'
-import TaskItem from './task-item'
-import { makeStyledComponent } from './utils/styled'
+  ScrollView,
+} from "react-native-gesture-handler";
+import TaskItem from "./task-item";
+import { makeStyledComponent } from "../utils/styled";
 
-const StyledView = makeStyledComponent(View)
-const StyledScrollView = makeStyledComponent(ScrollView)
+const StyledView = makeStyledComponent(View);
+const StyledScrollView = makeStyledComponent(ScrollView);
 
 interface TaskItemData {
-  id: string
-  subject: string
-  done: boolean
+  id: string;
+  subject: string;
+  done: boolean;
 }
 
 interface TaskListProps {
-  data: Array<TaskItemData>
-  editingItemId: string | null
-  onToggleItem: (item: TaskItemData) => void
-  onChangeSubject: (item: TaskItemData, newSubject: string) => void
-  onFinishEditing: (item: TaskItemData) => void
-  onPressLabel: (item: TaskItemData) => void
-  onRemoveItem: (item: TaskItemData) => void
+  data: Array<TaskItemData>;
+  editingItemId: string | null;
+  onToggleItem: (item: TaskItemData) => void;
+  onChangeSubject: (item: TaskItemData, newSubject: string) => void;
+  onFinishEditing: (item: TaskItemData) => void;
+  onPressLabel: (item: TaskItemData) => void;
+  onRemoveItem: (item: TaskItemData) => void;
 }
 
 interface TaskItemProps
-  extends Pick<PanGestureHandlerProps, 'simultaneousHandlers'> {
-  data: TaskItemData
-  isEditing: boolean
-  onToggleItem: (item: TaskItemData) => void
-  onChangeSubject: (item: TaskItemData, newSubject: string) => void
-  onFinishEditing: (item: TaskItemData) => void
-  onPressLabel: (item: TaskItemData) => void
-  onRemove: (item: TaskItemData) => void
+  extends Pick<PanGestureHandlerProps, "simultaneousHandlers"> {
+  data: TaskItemData;
+  isEditing: boolean;
+  onToggleItem: (item: TaskItemData) => void;
+  onChangeSubject: (item: TaskItemData, newSubject: string) => void;
+  onFinishEditing: (item: TaskItemData) => void;
+  onPressLabel: (item: TaskItemData) => void;
+  onRemove: (item: TaskItemData) => void;
 }
 
 export const AnimatedTaskItem = (props: TaskItemProps) => {
@@ -46,43 +46,43 @@ export const AnimatedTaskItem = (props: TaskItemProps) => {
     onChangeSubject,
     onFinishEditing,
     onPressLabel,
-    onRemove
-  } = props
+    onRemove,
+  } = props;
   const handleToggleCheckbox = useCallback(() => {
-    onToggleItem(data)
-  }, [data, onToggleItem])
+    onToggleItem(data);
+  }, [data, onToggleItem]);
   const handleChangeSubject = useCallback(
-    subject => {
-      onChangeSubject(data, subject)
+    (subject) => {
+      onChangeSubject(data, subject);
     },
     [data, onChangeSubject]
-  )
+  );
   const handleFinishEditing = useCallback(() => {
-    onFinishEditing(data)
-  }, [data, onFinishEditing])
+    onFinishEditing(data);
+  }, [data, onFinishEditing]);
   const handlePressLabel = useCallback(() => {
-    onPressLabel(data)
-  }, [data, onPressLabel])
+    onPressLabel(data);
+  }, [data, onPressLabel]);
   const handleRemove = useCallback(() => {
-    onRemove(data)
-  }, [data, onRemove])
+    onRemove(data);
+  }, [data, onRemove]);
   return (
     <StyledView
       w="full"
       from={{
         opacity: 0,
         scale: 0.5,
-        marginBottom: -46
+        marginBottom: -46,
       }}
       animate={{
         opacity: 1,
         scale: 1,
-        marginBottom: 0
+        marginBottom: 0,
       }}
       exit={{
         opacity: 0,
         scale: 0.5,
-        marginBottom: -46
+        marginBottom: -46,
       }}
     >
       <TaskItem
@@ -97,8 +97,8 @@ export const AnimatedTaskItem = (props: TaskItemProps) => {
         onRemove={handleRemove}
       />
     </StyledView>
-  )
-}
+  );
+};
 
 export default function TaskList(props: TaskListProps) {
   const {
@@ -108,14 +108,14 @@ export default function TaskList(props: TaskListProps) {
     onChangeSubject,
     onFinishEditing,
     onPressLabel,
-    onRemoveItem
-  } = props
-  const refScrollView = useRef(null)
+    onRemoveItem,
+  } = props;
+  const refScrollView = useRef(null);
 
   return (
     <StyledScrollView ref={refScrollView} w="full">
       <AnimatePresence>
-        {data.map(item => (
+        {data.map((item) => (
           <AnimatedTaskItem
             key={item.id}
             data={item}
@@ -130,5 +130,5 @@ export default function TaskList(props: TaskListProps) {
         ))}
       </AnimatePresence>
     </StyledScrollView>
-  )
+  );
 }

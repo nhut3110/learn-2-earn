@@ -10,7 +10,7 @@ import {
 } from "native-base";
 import { DrawerContentComponentProps } from "@react-navigation/drawer";
 import AnimatedColorBox from "./animated-color-box";
-import ThemeToggle from "./theme-toggle";
+import ThemeToggle from "../theme-toggle";
 import { Feather } from "@expo/vector-icons";
 import MenuButton from "./menu-button";
 
@@ -54,18 +54,18 @@ const Sidebar = (props: DrawerContentComponentProps) => {
           Wanna take some point?
         </Heading>
         <MenuButton
-          active={currentRoute === "Main"}
-          onPress={handlePressMenuMain}
-          icon="inbox"
-        >
-          Todo List
-        </MenuButton>
-        <MenuButton
           active={currentRoute === "About"}
           onPress={handlePressMenuAbout}
-          icon="info"
+          icon="coffee"
         >
           Activity Board
+        </MenuButton>
+        <MenuButton
+          active={currentRoute === "Main"}
+          onPress={handlePressMenuMain}
+          icon="check-square"
+        >
+          Todo List
         </MenuButton>
       </VStack>
       <Center>

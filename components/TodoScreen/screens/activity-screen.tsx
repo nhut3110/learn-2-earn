@@ -9,10 +9,11 @@ import {
   useColorModeValue,
 } from "native-base";
 import { Feather } from "@expo/vector-icons";
-import AnimatedColorBox from "../animated-color-box";
+import AnimatedColorBox from "../todo-components/animated-color-box";
 import Navbar from "../navbar";
 import Masthead from "../masthead";
-import LinkButton from "../link-button";
+import LinkButton from "../todo-components/link-button";
+import ActivityBox from "../activity-components/activity-box";
 
 const ActivityScreen = () => {
   return (
@@ -37,13 +38,19 @@ const ActivityScreen = () => {
       >
         <VStack flex={1} space={4}>
           <Box alignItems="center">
-            <Image
+            {/* <Image
               source={require("../assets/profile-image.jpg")}
               borderRadius="full"
               resizeMode="cover"
               w={120}
               h={120}
               alt="hehe"
+            /> */}
+            <ActivityBox
+              activityName="Kill 10 gays"
+              owner="Dr Nicole"
+              description="You have to kill 10 gay boys to claim the reward hehe"
+              time="2:37 31/5/2022"
             />
           </Box>
         </VStack>

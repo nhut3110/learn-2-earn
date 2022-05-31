@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Box, useToken } from 'native-base'
-import usePrevious from './utils/use-previous'
+import usePrevious from '../utils/use-previous'
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
