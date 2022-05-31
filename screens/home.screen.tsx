@@ -3,7 +3,11 @@ import Navigation from '../navigation/home.navigation';
 import useColorScheme from '../hooks/useColorScheme';
 import Svg, {Circle} from 'react-native-svg';
 import { Dimensions, StyleSheet } from 'react-native';
-import {useSharedValue} from 'react-native-reanimated';
+
+import Animated, {
+  useSharedValue,
+  useAnimatedScrollHandler,
+} from 'react-native-reanimated';
 
 import { 
   NativeBaseProvider,
@@ -29,9 +33,10 @@ import {
 } from "@expo/vector-icons";
 
 import NavBar from '../components/NavBar/NavBar';
+import ProgressBar from '../components/ProgressBar/ProgressBar';
+import HistoryButton from '../components/HistoryButton/HistoryButton';
     
 export default function HomeScreen() {
-  // const progress = useSharedValue(0)
 
   return (
     <NativeBaseProvider>
@@ -56,32 +61,9 @@ export default function HomeScreen() {
                   <Icon mb="1" ml="5" as={<AntDesign name={"plus"} />} color="white" size="8" />
                 </Pressable>
               </Flex>
-              <Flex w="300" h="300" alignSelf="center" my="5">
-                <Svg style={styles.container}>
-                  <Circle
-                  cx={150}
-                  cy={150}
-                  r={120}
-                  stroke="#54566E"
-                  strokeWidth={35}/>
-
-                  <Circle
-                  cx={150}
-                  cy={150}
-                  r={120}
-                  stroke="#654EA3"
-                  strokeWidth={35}
-                  strokeDasharray={500}
-                  strokeDashoffset={1000 * 0.8}/>
-                </Svg>
-
-                <Flex direction="row" alignSelf="center" width="70%">
-                  <Icon mb="1" as={<MaterialCommunityIcons name={"moon-full"} />} color="#654EA3" size="5" />
-                  <Text color="white">Balance</Text>
-                  <Spacer/>
-                  <Icon mb="1" as={<MaterialCommunityIcons name={"moon-full"} />} color="#54566E" size="5" />
-                  <Text color="white">Spent</Text>
-                </Flex>
+              <Flex w="300" h="300" alignSelf="center" mt="5">
+                <ProgressBar/>
+                
               </Flex>
               <Flex direction="column">
                 <Heading
@@ -97,29 +79,61 @@ export default function HomeScreen() {
                   maxW="100%"
                   h="80"
                   _contentContainerStyle={{
-                    px: "20px",
+                    // px: "15px",
+                    px:"15px",
                     mb: "4",
                     minW: "72"
                 }}>
-                  <VStack flex="1" space={5} alignItems="center" mb="0.5">
-                    <Button
-                      colorScheme="primary"
-                      w="100%" 
-                      h="100%"
-                      leftIcon={<Icon mb="1" as={<Entypo name="credit"/>} color="white" size = "10"/>}
-                      rightIcon={<Icon mb="1" as={<Entypo name="chevron-thin-right"/>} color="white" size = "10"/>}>
-                        <Flex direction="row" w="100%" justifyContent="flex-start">
-                          <Box mr="10">
-                            <Text color='#fff' fontWeight="700">Recieve</Text>
-                            <Text color="#54566E">May 11 | From: 0xa7a...</Text>
-                          </Box>
-                          <Box>
-                            <Text color='#fff' fontWeight="600">0.05 ETH</Text>
-                            <Text color="#54566E">10:20 AM</Text>
-                          </Box>
-                        </Flex>
-                    </Button>
-                  </VStack>
+                  <HistoryButton
+                      tsType='Receive'
+                      tsDate='April 20'
+                      senderId='0xc002869'
+                      creditsAmount='0.69'
+                      timeStamp='10:30 AM'
+                    />
+                  
+                  <HistoryButton
+                      tsType='Receive'
+                      tsDate='April 20'
+                      senderId='0xc002869'
+                      creditsAmount='6.96'
+                      timeStamp='10:30 AM'
+                    />
+                    <HistoryButton
+                      tsType='Receive'
+                      tsDate='April 20'
+                      senderId='0xc002869'
+                      creditsAmount='2.5'
+                      timeStamp='10:30 AM'
+                    />
+                    <HistoryButton
+                      tsType='Receive'
+                      tsDate='April 20'
+                      senderId='0xc002869'
+                      creditsAmount='5.69'
+                      timeStamp='10:30 AM'
+                    />
+                    <HistoryButton
+                      tsType='Receive'
+                      tsDate='April 20'
+                      senderId='0xc002869'
+                      creditsAmount='6.9'
+                      timeStamp='10:30 AM'
+                    />
+                    <HistoryButton
+                      tsType='Receive'
+                      tsDate='April 20'
+                      senderId='0xc002869'
+                      creditsAmount='5.33'
+                      timeStamp='10:30 AM'
+                    />
+                    <HistoryButton
+                      tsType='Receive'
+                      tsDate='April 20'
+                      senderId='0xc002869'
+                      creditsAmount='6.9'
+                      timeStamp='10:30 AM'
+                    />
                 </ScrollView>
               </Flex>
             </VStack>
@@ -128,17 +142,9 @@ export default function HomeScreen() {
       </Box>
 
       <NavBar/>
+      {/* <BottomTabNavigator/> */}
     </NativeBaseProvider>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    // justifyContent: 'center',
-    // width: 400,
-    // height: 400,
-    alignSelf: 'center',
-    backgroundColor: '#171930',
-    // marginTop: -50,
-  },
-});
+
