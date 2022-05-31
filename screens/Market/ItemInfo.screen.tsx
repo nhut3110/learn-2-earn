@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronLeftIcon, Button, Pressable, Modal, FormControl, Input, Center, NativeBaseProvider, Box, Image, Text, HStack, InfoOutlineIcon} from "native-base";
+import { ChevronLeftIcon, Button, Pressable, Modal, FormControl, Input, Center, NativeBaseProvider, Box, Image, Text, HStack, InfoOutlineIcon, CheckIcon, useToast } from "native-base";
 import { useState } from "react";
 
 const ItemInfo = () => {
@@ -20,6 +20,7 @@ const ItemInfo = () => {
 };
 
 const Example = () => {
+  const toast = useToast();
   const [showModal, setShowModal] = useState(false);
   return <Center mt="5">
       <Button onPress={() => setShowModal(true)}>BUY</Button>
@@ -28,17 +29,31 @@ const Example = () => {
           <Modal.CloseButton />
           <Modal.Header>Buy</Modal.Header>
           <Modal.Body>
-            <Text textAlign="center" justifyContent="center">
-              <InfoOutlineIcon size="5" mb="-1" mr="2" />
-              Buy this item ?
-            </Text>
+            <HStack space={2} justifyContent="center">
+              <InfoOutlineIcon size="5" />
+              <Text>
+                Buy this item ?
+              </Text>
+            </HStack>
           </Modal.Body>
           <Modal.Footer>
             <Button.Group space={2}>
               <Button onPress={() => {
               setShowModal(false);
+              toast.show({
+                render: () => {
+                return <Box bg="primary.100" px="2" py="1" rounded="sm" mb={5}>
+                  <HStack space={2}>
+                    <CheckIcon size="5" color="emerald.500"/> 
+                    <Text>  
+                      Successfully purchase
+                    </Text>
+                  </HStack>
+                </Box>;
+                }
+              });
             }}>
-                Buy
+                Purchase
               </Button>
               <Button variant="ghost" colorScheme="blueGray" onPress={() => {
               setShowModal(false);
