@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronLeftIcon, Button, Pressable, Modal, FormControl, Input, Center, NativeBaseProvider, Box, Image, Text, HStack } from "native-base";
+import { ChevronLeftIcon, Button, Pressable, Modal, FormControl, Input, Center, NativeBaseProvider, Box, Image, Text, HStack, InfoOutlineIcon} from "native-base";
 import { useState } from "react";
 
 const ItemInfo = () => {
@@ -8,7 +8,7 @@ const ItemInfo = () => {
       <HStack space={1} ml="-2" mt="1">
         <ChevronLeftIcon size="6" color="#FFFFFF"/> 
         <Text color="#FFFFFF" fontSize="2xl" fontWeight="600" mt="-1" >
-            Item Info
+           Item Info
         </Text>
       </HStack>
     </Pressable>
@@ -21,33 +21,29 @@ const ItemInfo = () => {
 
 const Example = () => {
   const [showModal, setShowModal] = useState(false);
-  return <Center>
-      <Button onPress={() => setShowModal(true)}>Button</Button>
+  return <Center mt="5">
+      <Button onPress={() => setShowModal(true)}>BUY</Button>
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <Modal.Content maxWidth="400px">
           <Modal.CloseButton />
-          <Modal.Header>Contact Us</Modal.Header>
+          <Modal.Header>Buy</Modal.Header>
           <Modal.Body>
-            <FormControl>
-              <FormControl.Label>Name</FormControl.Label>
-              <Input />
-            </FormControl>
-            <FormControl mt="3">
-              <FormControl.Label>Email</FormControl.Label>
-              <Input />
-            </FormControl>
+            <Text textAlign="center" justifyContent="center">
+              <InfoOutlineIcon size="5" mb="-1" mr="2" />
+              Buy this item ?
+            </Text>
           </Modal.Body>
           <Modal.Footer>
             <Button.Group space={2}>
+              <Button onPress={() => {
+              setShowModal(false);
+            }}>
+                Buy
+              </Button>
               <Button variant="ghost" colorScheme="blueGray" onPress={() => {
               setShowModal(false);
             }}>
                 Cancel
-              </Button>
-              <Button onPress={() => {
-              setShowModal(false);
-            }}>
-                Save
               </Button>
             </Button.Group>
           </Modal.Footer>
@@ -60,7 +56,7 @@ const Example = () => {
         return (
           <NativeBaseProvider>
             <Box bg="#171930" h="100%" w="100%">
-              <ItemInfo/>
+              <ItemInfo />
               <Example/>
             </Box>
           </NativeBaseProvider>
