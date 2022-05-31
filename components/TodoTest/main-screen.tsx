@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Icon, VStack, useColorModeValue, Fab } from "native-base";
+import { Icon, VStack, useColorModeValue, Fab, Box } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import AnimatedColorBox from "./animated-color-box";
 import TaskList from "./task-list";
@@ -66,9 +66,11 @@ export default function MainScreen() {
       bg={useColorModeValue("warmGray.50", "primary.900")}
       w="full"
     >
+      {/* <Box bg="purple.500"></Box> */}
       <Masthead title="" image={require("./assets/ganyu.jpg")}>
         {/* <NavBar /> */}
       </Masthead>
+
       <VStack
         flex={1}
         space={1}
