@@ -1,13 +1,19 @@
 import React from "react";
-import { ChevronLeftIcon, Button, Pressable, Modal, FormControl, Input, Center, NativeBaseProvider, Box, Image, Text, HStack, InfoOutlineIcon, CheckIcon, useToast } from "native-base";
+import { ChevronLeftIcon, Button, Pressable, Modal, FormControl, Input, Center, NativeBaseProvider, Box, Image, Text, HStack, VStack, InfoOutlineIcon, CheckIcon, useToast } from "native-base";
 import { useState } from "react";
+
+interface itemInfo{
+  uri ?: string;
+  itemName: string;
+  price: string;
+}
 
 const ItemInfo = () => {
   return<Box>
     <Pressable my="30px" ml="3" w="150px" bg="transparent" color="transparent">
       <HStack space={1} ml="-2" mt="1">
         <ChevronLeftIcon size="6" color="#FFFFFF"/> 
-        <Text color="#FFFFFF" fontSize="2xl" fontWeight="600" mt="-1" >
+        <Text color="#FFFFFF" fontSize="2xl" fontWeight="600" mt="-1.5" >
            Item Info
         </Text>
       </HStack>
@@ -16,6 +22,18 @@ const ItemInfo = () => {
       <Image source={{ uri: "https://sc04.alicdn.com/kf/U0c6c7fa9609d4ecda336bfd114d6a3f0o.jpeg"}} 
                   alt="Alternate Text" size="350px" borderRadius="20"/>
     </Center>
+
+    <VStack ml="8" mt="5">
+      <Text color="#FFFFFF" fontSize="3xl" fontWeight="bold">
+        PEPSI
+      </Text>
+      <Text color="#FFFFFF" fontSize="2xl">
+        Price: 10 ETH
+      </Text>
+      <Text>
+      
+      </Text>
+    </VStack>
   </Box>;
 };
 

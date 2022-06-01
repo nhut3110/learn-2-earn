@@ -1,6 +1,5 @@
 import React from "react";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { LinearGradient } from 'expo-linear-gradient';
 import {
         Box,
         Heading,  
