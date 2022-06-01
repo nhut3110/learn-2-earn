@@ -9,8 +9,8 @@ import {
     Entypo,
   } from "@expo/vector-icons";
 
-export default function CircularProgressBar() {
-    let val: number = 101;
+const CircularProgressBar = () => {
+    let val: number = 120;
     let color: string = (val < 100) ? "#2a9d8f"
                 :(val < 200) ? "#e9c46a"
                 :(val < 300) ? "#f4a261"
@@ -64,3 +64,5 @@ const styles = StyleSheet.create({
       marginBottom: 20,
     },
 });
+
+export default CircularProgressBar;

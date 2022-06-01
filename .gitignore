@@ -8,6 +8,9 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
+package-lock.json
+yarn.lock
+package.json
 web-build/
 
 # macOS

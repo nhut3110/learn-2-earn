@@ -35,11 +35,18 @@ import {
 import NavBar from '../components/NavBar/NavBar';
 import ProgressBar from '../components/ProgressBar/ProgressBar';
 import HistoryButton from '../components/HistoryButton/HistoryButton';
+
+const LinearGradient = require("expo-linear-gradient").LinearGradient;
+const config = {
+  dependencies: {
+    "linear-gradient": LinearGradient
+  }
+};
     
-export default function HomeScreen() {
+const HomeScreen = () => {
 
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider config={config}>
 
       <Box w="100%" h="100%" alignSelf="center" backgroundColor="#171930">
         <Center w="100%" mt="20">
@@ -80,14 +87,14 @@ export default function HomeScreen() {
                   h="80"
                   _contentContainerStyle={{
                     // px: "15px",
-                    px:"15px",
+                    // px:"15px",
                     mb: "4",
                     minW: "72"
                 }}>
                   <HistoryButton
                       tsType='Receive'
                       tsDate='April 20'
-                      senderId='0xc002869'
+                      senderId='0xa7a28...'
                       creditsAmount='0.69'
                       timeStamp='10:30 AM'
                     />
@@ -125,11 +132,11 @@ export default function HomeScreen() {
                       tsDate='April 20'
                       senderId='0xc002869'
                       creditsAmount='5.33'
-                      timeStamp='10:30 AM'
+                      timeStamp='10:31 AM'
                     />
                     <HistoryButton
                       tsType='Receive'
-                      tsDate='April 20'
+                      tsDate='April 21'
                       senderId='0xc002869'
                       creditsAmount='6.9'
                       timeStamp='10:30 AM'
@@ -146,5 +153,7 @@ export default function HomeScreen() {
     </NativeBaseProvider>
   );
 };
+
+export default HomeScreen;
 
 
