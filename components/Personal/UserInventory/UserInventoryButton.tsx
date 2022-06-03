@@ -108,7 +108,7 @@ const UserInventoryButton = (props: UserItems) => {
                                   <HStack space={2}>
                                     <CheckIcon size="5" color="emerald.500"/> 
                                     <Text>  
-                                      Successfully purchase
+                                        Used successfully
                                     </Text>
                                   </HStack>
                                 </Box>;
@@ -128,7 +128,7 @@ const UserInventoryButton = (props: UserItems) => {
             </Modal>
 
 
-            <Modal isOpen={showModal2} onClose={() => setShowModal2(false)} size="lg" mt="-10">
+            <Modal isOpen={showModal2} onClose={() => setShowModal2(false)} size="lg" my="-100px">
                 <Modal.Content bg="#FFFFFF" 
                     w="350px" h="450px">
                     <Modal.Header>Use Item</Modal.Header>
