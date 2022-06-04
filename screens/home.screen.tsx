@@ -43,7 +43,7 @@ export default function HomeScreen() {
         <Center w="100%" mt="20">
           <Box w="100%">
             <VStack space={2.5} w="100%">
-              <Flex direction="row" px="5">
+              {/* <Flex direction="row" px="5">
                 <Heading 
                   size={"xl"} 
                   fontWeight="600"
@@ -58,7 +58,7 @@ export default function HomeScreen() {
                 <Pressable>
                   <Icon mb="1" ml="5" as={<AntDesign name={"plus"} />} color="white" size="8" />
                 </Pressable>
-              </Flex>
+              </Flex> */}
               
               {/* <Flex width="100%" height="80%" backgroundColor="white" alignSelf="center">
                   <Svg>
