@@ -1,12 +1,6 @@
 import {
-    Button, 
-    Flex,
-    Spacer,
     Text,
     Box,
-    Icon,
-    VStack,
-    Modal,
     HStack,
     Center
 } from 'native-base';

@@ -25,9 +25,9 @@ const MarketScreen = () => {
     onOpen,
     onClose
   } = useDisclose();
-  return<Box backgroundColor="#171930" w="100%" h="100%" >
-          <ScrollView showsVerticalScrollIndicator={false}>
-          <HStack justifyContent="space-between" alignItems ="center" mt="10">
+  return <Box backgroundColor="#171930" w="100%" h="100%" >
+           <ScrollView showsVerticalScrollIndicator={false}>
+            <HStack justifyContent="space-between" alignItems ="center" mt="10">
             <Text fontSize="4xl" _light={{
               color: "blueGray.50"
             }} _dark={{

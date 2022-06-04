@@ -1,17 +1,10 @@
 import React from "react";
 import { 
         Box, 
-        Heading, 
         AspectRatio, 
         Image, 
-        Text, 
         Center, 
-        HStack, 
-        Stack, 
         NativeBaseProvider, 
-        Button, 
-        VStack, 
-        ScrollView 
       } from "native-base";
 
 export default function PeronalHeader() {
