@@ -1,6 +1,6 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import MarketScreen from "./screens/Market.screen";
+import MarketScreen from "./screens/OldMarket.screen";
 
 const Drawer = createDrawerNavigator();
 
