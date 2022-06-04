@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '../screens/login.screen';
 import HomeScreen from '../screens/home.screen';
 import PersonalScreen from '@/components/Personal/PersonalScreen';
-import MarketScreen from '@/components/OldMarket/screens/OldMarket.screen';
+import MarketScreen from '@/components/Market/MarketScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,8 +27,8 @@ export default function MainNavigation() {
           }}
         /> */}
         <Stack.Screen
-        name="Personal"
-        component={PersonalScreen}
+        name="Market"
+        component={MarketScreen}
         options={{
           header: () => null, 
         }}

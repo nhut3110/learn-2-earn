@@ -17,6 +17,7 @@ import {
         useDisclose,
         Actionsheet,
         FavouriteIcon,
+        Flex
         } from "native-base";
 
 
@@ -43,25 +44,22 @@ const SearchItems = () => {
                             <Box >
                                 <ScrollView h="500">
                                     <VStack space={4} justifyContent="center" alignItems="center" mt="5">
-                                        <Box w="95%" h="20" justifyContent="center" bg="#1E203B" borderRadius="15" shadow={3}>         
-                                            <Text fontSize="2xl" position="absolute" left="0"  _light={{
-                                            color: "blueGray.50"
-                                            }} _dark={{
-                                            color: "blueGray.50"
-                                            }} fontWeight="400" ml="5">
-                                                Pepsi
-                                            </Text>
-                                        </Box>
-                                        <Box w="95%" h="20" justifyContent="center" bg="#1E203B" borderRadius="15" shadow={3}>
-                                        
-                                            <Text fontSize="2xl" position="absolute" left="0"  _light={{
-                                            color: "blueGray.50"
-                                            }} _dark={{
-                                            color: "blueGray.50"
-                                            }} fontWeight="400" ml="5">
-                                                Parking Ticket
-                                            </Text>
-                                        </Box>
+                                        <Button w="95%" h="100%" justifyContent="flex-start" bg="#1E203B" borderRadius="15" shadow={3}>         
+                                            <Flex direction="row" alignItems="center">
+                                                <Image 
+                                                source={{ uri: "https://sc04.alicdn.com/kf/U0c6c7fa9609d4ecda336bfd114d6a3f0o.jpeg"}} 
+                                                alt="Alternate Text" 
+                                                size="xs" 
+                                                borderRadius="5"/>
+                                                <Text 
+                                                fontSize="2xl"  
+                                                fontWeight="400" 
+                                                ml="5"
+                                                color="#FFFFFF">
+                                                    Pepsi
+                                                </Text>
+                                            </Flex>
+                                        </Button>
                                     </VStack>
                                 </ScrollView>
                             </Box>
