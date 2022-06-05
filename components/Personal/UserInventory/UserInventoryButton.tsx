@@ -27,17 +27,15 @@ const UserInventoryButton = (props: UserItems) => {
     const [showModal, setShowModal] = useState(false);
     const [showModal2, setShowModal2] = useState(false);
     return(
-        <VStack flex="1" space={3} mb="3" alignItems="center">
-            <View>
-                <Button
+        <Box>
+            <Button
                     onPress={() => setShowModal(true)}
                     variant="ghost"
                     size='sm'
                     bg="#1E203B"
                     borderRadius="10" 
                     shadow={3}
-                    w="100%" 
-                    h="100%"
+                    
                     >
                     <Flex direction="row" alignItems="center" justifyContent="space-between" w="350px">
                         <Image source={{
@@ -50,23 +48,20 @@ const UserInventoryButton = (props: UserItems) => {
                         size="sm"  
                         borderRadius="5" 
                         />
-                        <Text fontSize="lg" _light={{
-                            color: "warmGray.50"
-                            }} _dark={{
-                            color: "muted.400"
-                            }} fontWeight="500" >
-                            {props.nameItem}
+                        <Text fontSize="lg"
+                        color="#FFFFFF"
+                        fontWeight="500" >
+                        {props.nameItem}
                         </Text>
-                        <Text fontSize="sm" _light={{
-                        color: "warmGray.50"
-                            }} _dark={{
-                        color: "muted.400"
-                            }} fontWeight="500" ml="5" >
-                            x{props.stockItem}
+                        <Text fontSize="sm"
+                        color="#FFFFFF"
+                        fontWeight="500"
+                        ml="5" >
+                        x{props.stockItem}
                         </Text>
                     </Flex>
                 </Button>  
-            </View>
+            
             <Modal 
             isOpen={showModal} 
             onClose={() => setShowModal(false)} my="-100px">
@@ -162,7 +157,7 @@ const UserInventoryButton = (props: UserItems) => {
                     </Modal.Footer>
                 </Modal.Content>
             </Modal>
-        </VStack>
+        </Box> 
     )
 }
 

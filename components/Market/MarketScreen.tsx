@@ -35,23 +35,23 @@ export default function MarketScreen() {
                                     costProduct= '4'
                                     reactCount='54'
                                     typeProduct='Drink'
-                                    />
+                                />
                                 <MarketProduct
                                     uri='https://i.pinimg.com/564x/e9/d4/97/e9d49723d00cbb642dd0817db861af84.jpg'
                                     nameProduct='1 hour use MetalShop'
                                     costProduct= '3'
                                     reactCount='123'
                                     typeProduct='Ticket'
-                                    />
+                                />
                                 <MarketProduct
                                     uri='https://i.pinimg.com/564x/e9/d4/97/e9d49723d00cbb642dd0817db861af84.jpg'
                                     nameProduct='1 hour use Maker'
                                     costProduct= '2'
                                     reactCount='123'
                                     typeProduct='Ticket'
-                                    />
-                                </HStack>
-                            </ScrollView>
+                                />
+                            </HStack>
+                        </ScrollView>
                     </Box>
                     <Box px="5" position="absolute" bottom="40px">
                         <Text color="#FFFFFF"
@@ -72,7 +72,7 @@ export default function MarketScreen() {
                         <ListProductCollection
                             uri='https://sc04.alicdn.com/kf/U0c6c7fa9609d4ecda336bfd114d6a3f0o.jpeg'
                             nameProduct='Pepsi'
-                            costProduct= '3'
+                            costProduct='3'
                             reactCount='54'
                             typeProduct='Drink'
                         />
