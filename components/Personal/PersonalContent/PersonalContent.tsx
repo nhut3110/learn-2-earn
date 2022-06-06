@@ -22,8 +22,7 @@ import UserInventoryButton from '../UserInventory/UserInventoryButton';
 export default function PersonalContent() {
     return (
         <NativeBaseProvider>
-            {/* mt="-135px" */}
-            <Box w="100%" mt="75px" px={3}> 
+            <Box h="100%" mt="-120px" px={3}> 
                 <Stack space={3}>
                     <Text 
                     fontSize="md"

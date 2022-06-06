@@ -27,7 +27,7 @@ const UserInventoryButton = (props: UserItems) => {
     const [showModal, setShowModal] = useState(false);
     const [showModal2, setShowModal2] = useState(false);
     return(
-        <Box>
+        <Box alignItems="center" justifyContent="center">
             <Button
                     onPress={() => setShowModal(true)}
                     variant="ghost"
@@ -35,7 +35,8 @@ const UserInventoryButton = (props: UserItems) => {
                     bg="#1E203B"
                     borderRadius="10" 
                     shadow={3}
-                    
+                    w="100%"
+                    mb="10px"
                     >
                     <Flex direction="row" alignItems="center" justifyContent="space-between" w="350px">
                         <Image source={{
@@ -64,12 +65,12 @@ const UserInventoryButton = (props: UserItems) => {
             
             <Modal 
             isOpen={showModal} 
-            onClose={() => setShowModal(false)} my="-100px">
+            onClose={() => setShowModal(false)}>
             <Modal.Content bg="#FFFFFF" 
                 w="350px" h="450px">
                 <Modal.Header>Item</Modal.Header>
                 <Modal.CloseButton />
-                <Modal.Body my="10">
+                <Modal.Body>
                     <VStack space={2} alignItems="center">
                         <Image source={{
                             uri:
@@ -123,12 +124,12 @@ const UserInventoryButton = (props: UserItems) => {
             </Modal>
 
 
-            <Modal isOpen={showModal2} onClose={() => setShowModal2(false)} size="lg" my="-100px">
+            <Modal isOpen={showModal2} onClose={() => setShowModal2(false)} size="lg">
                 <Modal.Content bg="#FFFFFF" 
                     w="350px" h="450px">
                     <Modal.Header>Use Item</Modal.Header>
                     <Modal.CloseButton/>
-                    <Modal.Body my="10">
+                    <Modal.Body>
                         <Image source={{
                             uri:
                                 props.useItemQR == ""
@@ -143,7 +144,6 @@ const UserInventoryButton = (props: UserItems) => {
                     </Modal.Body>
                     <Modal.Footer>
                     <Button bg="#10b981" flex="1" onPress={() => {
-                        setShowModal(true);
                         setShowModal2(false)
                     }}>
                         <Text
