@@ -44,6 +44,7 @@ const ProductCollection = (props: ProductInfo) => {
                 borderColor="#ffff" 
                 justifyContent="flex-start" 
                 mb="10px"
+                ml="10px"
                 onPress={() => setShowModal(true)}>
                 <Flex direction="row" alignItems="center" justifyContent="space-between">
                     <Flex direction="row" alignItems="flex-start" justifyContent="space-between" w="80%">

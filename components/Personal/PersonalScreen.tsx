@@ -17,7 +17,7 @@ export default function PeronalScreen() {
             <Box bg="#171930" h="100%" w="100%">
                 <PersonalHeader/>
                 <PersonalContent/>
-                <Box mt="100px">
+                {/* <Box mt="100px">
                     <Flex direction="column">
                         <Text
                         py="2"
@@ -58,8 +58,8 @@ export default function PeronalScreen() {
                             </Box>
                         </Flex>
                     </Flex>
-                </Box>
-                
+                </Box> */}
+                <NavBar/>
             </Box>
         </NativeBaseProvider>
     )
