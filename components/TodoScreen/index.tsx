@@ -17,7 +17,7 @@ const App = () => {
         overlayColor: "#00000000",
       }}
     >
-      <Drawer.Screen name="Activity Board" component={ActivityScreen} />
+      {/* <Drawer.Screen name="Activity Board" component={ActivityScreen} /> */}
       <Drawer.Screen name="Todo List" component={MainScreen} />
     </Drawer.Navigator>
   );

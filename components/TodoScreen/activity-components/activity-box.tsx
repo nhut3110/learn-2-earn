@@ -10,6 +10,7 @@ import {
   Stack,
   NativeBaseProvider,
 } from "native-base";
+import { Pressable } from "react-native";
 
 interface Props {
   activityName: string;
@@ -17,14 +18,16 @@ interface Props {
   uri?: string;
   description?: string;
   time: string;
-  tag?: string;
+  point?: string;
+  // handleOnPress: () => void;
 }
 const ActivityBox = (props: Props) => {
-  const { activityName, owner, uri, description, time, tag } = props;
+  const { activityName, owner, uri, description, time, point } = props;
   return (
-    <Box alignItems="center">
+    <Box alignItems="center" position="relative" top={0} left={0}>
       <Box
         maxW="150px"
+        h="150px"
         m={2}
         rounded="lg"
         overflow="hidden"
@@ -70,12 +73,13 @@ const ActivityBox = (props: Props) => {
             px="3"
             py="1.5"
           >
-            {tag == "" ? "TAG" : tag}
+            {point == "" ? "point" : point}
           </Center>
         </Box>
+        {/* <Pressable onPressIn={handleOnPress}> */}
         <Stack p="4" space={1}>
           <Stack space={1}>
-            <Heading size="md" ml="-1">
+            <Heading size="md" ml="-1" isTruncated>
               {activityName}
             </Heading>
             <Text
@@ -110,6 +114,7 @@ const ActivityBox = (props: Props) => {
             </HStack>
           </HStack>
         </Stack>
+        {/* </Pressable> */}
       </Box>
     </Box>
   );
