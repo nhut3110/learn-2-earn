@@ -14,6 +14,7 @@ import {
   Modal,
   FormControl,
   Button,
+  TextArea,
 } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import NavBar from "../navbar";
@@ -51,6 +52,7 @@ export default function MainScreen() {
   const numCol = 2;
   const toast = useToast();
   const [showModal, setShowModal] = useState(false);
+  const [showSubmitForm, setSubmitForm] = useState(false);
   const dataActivity = [
     {
       uri: "https://images.wallpaperscraft.com/image/single/ocean_beach_aerial_view_134429_2560x1440.jpg",
@@ -58,7 +60,7 @@ export default function MainScreen() {
       point: "100",
       owner: "Dr Nicole",
       description: "You have to kill 10 gay boys to claim the reward hehe",
-      time: "2:37 31/5/2022",
+      time: "31/5/2022",
     },
 
     {
@@ -67,7 +69,7 @@ export default function MainScreen() {
       point: "100",
       owner: "Dr Nicole",
       description: "You have to kill 10 gay boys to claim the reward hehe",
-      time: "2:37 31/5/2022",
+      time: "31/5/2022",
     },
 
     {
@@ -76,7 +78,7 @@ export default function MainScreen() {
       point: "200",
       owner: "Dr Nicole",
       description: "You have to kill 10 gay boys to claim the reward hehe",
-      time: "2:37 31/5/2022",
+      time: "31/5/2022",
     },
 
     {
@@ -85,7 +87,7 @@ export default function MainScreen() {
       point: "300",
       owner: "Dr Nicole",
       description: "You have to kill 10 gay boys to claim the reward hehe",
-      time: "2:37 31/5/2022",
+      time: "31/5/2022",
     },
 
     {
@@ -94,7 +96,7 @@ export default function MainScreen() {
       point: "1000",
       owner: "Dr Nicole",
       description: "You have to kill 10 gay boys to claim the reward hehe",
-      time: "2:37 31/5/2022",
+      time: "31/5/2022",
     },
   ];
   const styles = {
@@ -181,17 +183,33 @@ export default function MainScreen() {
                 />
               </Pressable>
               <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-                <Modal.Content maxWidth="400px">
+                <Modal.Content maxWidth="600px">
                   <Modal.CloseButton />
-                  <Modal.Header>Contact Us</Modal.Header>
+                  <Modal.Header>Activity Detail</Modal.Header>
                   <Modal.Body>
                     <FormControl>
-                      <FormControl.Label>Name</FormControl.Label>
-                      <Input />
+                      <FormControl.Label>Activity Name</FormControl.Label>
+                      <Input variant="unstyled" fontSize={15} isReadOnly>
+                        {item.activityName}
+                      </Input>
                     </FormControl>
                     <FormControl mt="3">
-                      <FormControl.Label>Email</FormControl.Label>
-                      <Input />
+                      <FormControl.Label>Lecturer</FormControl.Label>
+                      <Input variant="unstyled" fontSize={15} isReadOnly>
+                        {item.owner}
+                      </Input>
+                    </FormControl>
+                    <FormControl mt="3">
+                      <FormControl.Label>Reward</FormControl.Label>
+                      <Input variant="unstyled" fontSize={15} isReadOnly>
+                        {item.point} Points
+                      </Input>
+                    </FormControl>
+                    <FormControl mt="3">
+                      <FormControl.Label>Requirement</FormControl.Label>
+                      <TextArea variant="unstyled" fontSize={15} isReadOnly>
+                        {item.description}
+                      </TextArea>
                     </FormControl>
                   </Modal.Body>
                   <Modal.Footer>
@@ -207,10 +225,71 @@ export default function MainScreen() {
                       </Button>
                       <Button
                         onPress={() => {
-                          setShowModal(false);
+                          setSubmitForm(true);
                         }}
                       >
-                        Save
+                        Continue
+                      </Button>
+                    </Button.Group>
+                  </Modal.Footer>
+                </Modal.Content>
+              </Modal>
+
+              <Modal
+                isOpen={showSubmitForm}
+                onClose={() => setSubmitForm(false)}
+              >
+                <Modal.Content maxWidth="600px">
+                  <Modal.CloseButton />
+                  <Modal.Header>Activity Detail</Modal.Header>
+                  <Modal.Body>
+                    <FormControl>
+                      <FormControl.Label>Your Submission</FormControl.Label>
+                      <TextArea
+                        variant="unstyled"
+                        fontSize={15}
+                        placeholder="Enter your submission here..."
+                      ></TextArea>
+                    </FormControl>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button.Group space={2}>
+                      <Button
+                        variant="ghost"
+                        colorScheme="blueGray"
+                        onPress={() => {
+                          setSubmitForm(false);
+                        }}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        onPress={() => {
+                          setShowModal(false);
+                          setSubmitForm(false);
+                          toast.show({
+                            render: () => {
+                              return (
+                                <Box
+                                  _light={{
+                                    color: "purple.500",
+                                  }}
+                                  _dark={{
+                                    color: "emerald.400",
+                                  }}
+                                  px="2"
+                                  py="1"
+                                  rounded="sm"
+                                  mb={5}
+                                >
+                                  Submitted
+                                </Box>
+                              );
+                            },
+                          });
+                        }}
+                      >
+                        Submit
                       </Button>
                     </Button.Group>
                   </Modal.Footer>
@@ -239,7 +318,7 @@ export default function MainScreen() {
         size="sm"
         icon={<Icon color="white" as={<AntDesign name="plus" />} size="sm" />}
         colorScheme={useColorModeValue("blue", "darkBlue")}
-        bg={useColorModeValue("purple.600", "green.500")}
+        bg={useColorModeValue("purple.600", "emerald.500")}
         onPress={() => {
           const id = nanoid(10);
           setData([
