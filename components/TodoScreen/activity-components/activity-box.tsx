@@ -8,7 +8,6 @@ import {
   Center,
   HStack,
   Stack,
-  NativeBaseProvider,
 } from "native-base";
 import { Pressable } from "react-native";
 
@@ -49,7 +48,6 @@ const ActivityBox = (props: Props) => {
           <AspectRatio w="100%" ratio={16 / 9}>
             <Image
               source={{
-                // uri: "https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg",
                 uri:
                   uri == ""
                     ? "https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg"

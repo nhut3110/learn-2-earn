@@ -1,6 +1,6 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import MainScreen from "./screens/todo-screen";
+import MainScreen from "../../screens/todo.screen";
 import ActivityScreen from "./screens/activity-screen";
 import Sidebar from "./todo-components/sidebar";
 

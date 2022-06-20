@@ -6,7 +6,6 @@ import {
   Fab,
   Box,
   FlatList,
-  Text,
   Heading,
   Pressable,
   Input,
@@ -17,15 +16,13 @@ import {
   TextArea,
 } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
-import NavBar from "../navbar";
-import AnimatedColorBox from "../todo-components/animated-color-box";
-import TaskList from "../todo-components/task-list";
-import Masthead from "../masthead";
+import NavBar from "../components/TodoScreen/navbar";
+import AnimatedColorBox from "../components/TodoScreen/todo-components/animated-color-box";
+import TaskList from "../components/TodoScreen/todo-components/task-list";
+import Masthead from "../components/TodoScreen/masthead";
 import "react-native-get-random-values";
 import { nanoid } from "nanoid";
-import ThemeToggle from "../theme-toggle";
-import ActivityBox from "../activity-components/activity-box";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import ActivityBox from "../components/TodoScreen/activity-components/activity-box";
 
 interface activityItem {
   activityName: string;
@@ -153,7 +150,7 @@ export default function MainScreen() {
       {/* <Box bg="purple.500"></Box> */}
       <Masthead
         title="What's up?"
-        image={require("../assets/about-masthead.png")}
+        image={require("../components/TodoScreen/assets/about-masthead.png")}
       >
         <NavBar title="Activity Board" />
       </Masthead>
@@ -297,7 +294,7 @@ export default function MainScreen() {
               </Modal>
             </>
           )}
-          // numColumns={numCol}
+        // numColumns={numCol}
         ></FlatList>
       </Box>
       <VStack flex={1} bg={useColorModeValue("warmGray.50", "primary.900")}>
