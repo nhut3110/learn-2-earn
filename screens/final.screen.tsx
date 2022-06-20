@@ -71,14 +71,14 @@ const FinalScreen = () => {
 
         <VStack space={0.5} alignItems="center">
           <Button variant="ghost" size="lg" fontWeight="bold">
-              <HStack justifyContent="center" space={38}>
-                <HStack space={3} mx="3">
-                  <Icon size={7} as={<Feather name="clock"/>}/>
-                  <Text fontSize="lg" color="info.700" mt="1" ml="9" mr="2" >
-                  Check Grade
+              <HStack justifyContent="center" space={28} >
+                <HStack space={1} mr="4" ml="10">
+                  <Icon size={7} as={<Feather name="clock"/>} ml="3" mr="10"/>
+                  <Text fontSize="lg" color="info.700" mt="1" mx={5} >
+                  Settings
                   </Text>
                 </HStack>
-                <ChevronRightIcon size="7" ml="7"/>
+                <ChevronRightIcon size="7" mx="10"/>
               </HStack>
           </Button>
         </VStack>
