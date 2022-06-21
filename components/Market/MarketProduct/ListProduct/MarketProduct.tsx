@@ -94,7 +94,7 @@ const MarketProduct = (props: ProductInfo) => {
       </Center>
 
 
-      <Modal
+      {/* <Modal
         isOpen={showModal}
         onClose={() => setShowModal(false)}>
         <Modal.Content bg="#FFFFFF"
@@ -215,7 +215,7 @@ const MarketProduct = (props: ProductInfo) => {
             </Button>
           </Modal.Footer>
         </Modal.Content>
-      </Modal>
+      </Modal> */}
     </Center>
 
   )
