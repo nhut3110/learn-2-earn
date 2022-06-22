@@ -23,6 +23,8 @@ import Masthead from "../components/TodoScreen/masthead";
 import "react-native-get-random-values";
 import { nanoid } from "nanoid";
 import ActivityBox from "../components/TodoScreen/activity-components/activity-box";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 interface activityItem {
   activityName: string;
@@ -45,8 +47,7 @@ const initialData = [
   },
 ];
 
-export default function MainScreen() {
-  const numCol = 2;
+export default function MainScreen({ navigation }) {
   const toast = useToast();
   const [showModal, setShowModal] = useState(false);
   const [showSubmitForm, setSubmitForm] = useState(false);
@@ -144,7 +145,7 @@ export default function MainScreen() {
   return (
     <AnimatedColorBox
       flex={1}
-      bg={useColorModeValue("warmGray.50", "primary.900")}
+      bg={useColorModeValue("#171930", "primary.900")}
       w="full"
     >
       {/* <Box bg="purple.500"></Box> */}
@@ -161,7 +162,7 @@ export default function MainScreen() {
           showsHorizontalScrollIndicator={false}
           borderTopLeftRadius="20px"
           borderTopRightRadius="20px"
-          bg={useColorModeValue("warmGray.50", "primary.900")}
+          bg={useColorModeValue("#171930", "primary.900")}
           mt="-20px"
           pt="30px"
           p={4}
@@ -294,11 +295,13 @@ export default function MainScreen() {
               </Modal>
             </>
           )}
-        // numColumns={numCol}
+          // numColumns={numCol}
         ></FlatList>
       </Box>
-      <VStack flex={1} bg={useColorModeValue("warmGray.50", "primary.900")}>
-        <Heading p={4}>Todo List</Heading>
+      <VStack flex={1} bg={useColorModeValue("#171930", "primary.900")}>
+        <Heading p={4} color={useColorModeValue("white", "black")} size={"xl"}>
+          Todo List
+        </Heading>
         <TaskList
           data={data}
           onToggleItem={handleToggleTaskItem}
@@ -332,3 +335,7 @@ export default function MainScreen() {
     </AnimatedColorBox>
   );
 }
+
+const DetailScreen = ({ navigation, route }) => {
+  return <Text>{route}</Text>;
+};

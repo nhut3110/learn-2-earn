@@ -18,13 +18,15 @@ const NavBar = (props: Props) => {
   return (
     <HStack
       w="full"
-      h={40}
+      h={30}
       alignItems="center"
       justifyContent="space-between"
       p={4}
       pb={6}
     >
-      <Heading color={useColorModeValue("black", "white")}>{title}</Heading>
+      <Heading color={useColorModeValue("white", "black")} size={"xl"}>
+        {title}
+      </Heading>
       {/* <IconButton
         onPress={handlePressMenuButton}
         borderRadius={100}
@@ -35,7 +37,7 @@ const NavBar = (props: Props) => {
           color: useColorModeValue("black", "white"),
         }}
       /> */}
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
     </HStack>
   );
 };

@@ -3,14 +3,14 @@ import { ImageSourcePropType } from "react-native";
 import { Box, VStack, Heading, Image, useColorModeValue } from "native-base";
 
 interface Props {
-  title: string;
-  image: ImageSourcePropType;
-  children: React.ReactNode;
+  title?: string;
+  image?: string;
+  children?: React.ReactNode;
 }
 
 const Masthead = ({ title, image, children }: Props) => {
   return (
-    <VStack h="200px" pb={5}>
+    <VStack h="100px">
       <Image
         position="absolute"
         left={0}
@@ -19,7 +19,7 @@ const Masthead = ({ title, image, children }: Props) => {
         w="full"
         h="100px"
         resizeMode="cover"
-        source={image}
+        source={{ uri: image }}
         alt="masthead image"
       />
       {children}

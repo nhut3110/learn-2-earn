@@ -11,7 +11,7 @@ import { RootStackParamList, RootTabParamList } from '../types';
 
 import HomeScreen from "../screens/home.screen";
 import MarketScreen from "../screens/market.screen";
-import TodoScreen from "../screens/todo.screen";
+import TodoScreen from "../screens/activity.screen";
 import ProfileScreen from "../screens/profile.screen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -63,7 +63,7 @@ function BottomTabNavigator() {
         name="Todo"
         component={TodoScreen}
         options={{
-          title: 'Todo',
+          title: 'Activity',
           tabBarIcon: ({ color }) => <TabBarIcon name="check" color={color} />,
         }}
       />

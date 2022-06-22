@@ -55,7 +55,7 @@ const TaskItem = (props: Props) => {
 
   const activeTextColor = useToken(
     "colors",
-    useColorModeValue("darkText", "lightText")
+    useColorModeValue("lightText", "darkText")
   );
   const doneTextColor = useToken(
     "colors",
@@ -77,13 +77,13 @@ const TaskItem = (props: Props) => {
         <Box
           w="full"
           h="full"
-          bg={useColorModeValue("warmGray.50", "primary.900")}
+          bg={useColorModeValue("#171930", "primary.900")}
           alignItems="flex-end"
           justifyContent="center"
           pr={4}
         >
           <Icon
-            color={useColorModeValue("primary.900", "warmGray.50")}
+            color={useColorModeValue("red.500", "warmGray.50")}
             as={<Feather name="trash-2" />}
             size="sm"
           />
@@ -95,7 +95,7 @@ const TaskItem = (props: Props) => {
         w="full"
         px={4}
         py={2}
-        bg={useColorModeValue("warmGray.50", "primary.900")}
+        bg={useColorModeValue("#171930", "primary.900")}
       >
         <Box width={30} height={30} mr={2}>
           <Pressable onPress={onToggleCheckbox}>
@@ -109,7 +109,7 @@ const TaskItem = (props: Props) => {
         </Box>
         {isEditing ? (
           <Input
-            placeholder="Task"
+            placeholder="Empty Task"
             value={subject}
             variant="unstyled"
             fontSize={19}
@@ -119,6 +119,7 @@ const TaskItem = (props: Props) => {
             blurOnSubmit
             onChange={handleChangeSubject}
             onBlur={onFinishEditing}
+            color={"white"}
           />
         ) : (
           <AnimatedTaskLabel

@@ -35,13 +35,15 @@ const ActivityBox = (props: Props) => {
         _dark={{
           borderColor: "coolGray.600",
           backgroundColor: "gray.700",
+          // backgroundColor: "gray.700",
         }}
         _web={{
           shadow: 2,
           borderWidth: 0,
         }}
         _light={{
-          backgroundColor: "gray.50",
+          backgroundColor: "gray.700",
+          borderColor: "coolGray.600",
         }}
       >
         <Box>
@@ -77,7 +79,7 @@ const ActivityBox = (props: Props) => {
         {/* <Pressable onPressIn={handleOnPress}> */}
         <Stack p="4" space={1}>
           <Stack space={1}>
-            <Heading size="md" ml="-1" isTruncated>
+            <Heading size="md" ml="-1" isTruncated color={"white"}>
               {activityName}
             </Heading>
             <Text

@@ -5,7 +5,7 @@ import {
   Flex,
   HStack,
   ScrollView,
-  Text
+  Text,
 } from "native-base";
 import NavBar from "../components/NavBar/NavBar";
 import MarketHeader from "../components/Market/MarketHeader/MarketHeader";
@@ -23,59 +23,56 @@ export default function MarketScreen() {
           <Box mx="10px">
             <ScrollView
               horizontal={true}
-              showsHorizontalScrollIndicator={false}>
+              showsHorizontalScrollIndicator={false}
+            >
               <HStack space={4} mb="100px">
                 <MarketProduct
-                  uri='https://sc04.alicdn.com/kf/U0c6c7fa9609d4ecda336bfd114d6a3f0o.jpeg'
-                  nameProduct='Pepsi'
+                  uri="https://sc04.alicdn.com/kf/U0c6c7fa9609d4ecda336bfd114d6a3f0o.jpeg"
+                  nameProduct="Pepsi"
                   costProduct={4}
                   reactCount={54}
-                  typeProduct='Drink'
+                  typeProduct="Drink"
                 />
                 <MarketProduct
-                  uri='https://i.pinimg.com/564x/e9/d4/97/e9d49723d00cbb642dd0817db861af84.jpg'
-                  nameProduct='1 hour use MetalShop'
+                  uri="https://i.pinimg.com/564x/e9/d4/97/e9d49723d00cbb642dd0817db861af84.jpg"
+                  nameProduct="1 hour use MetalShop"
                   costProduct={3}
                   reactCount={123}
-                  typeProduct='Ticket'
+                  typeProduct="Ticket"
                 />
                 <MarketProduct
-                  uri='https://i.pinimg.com/564x/e9/d4/97/e9d49723d00cbb642dd0817db861af84.jpg'
-                  nameProduct='1 hour use Maker'
+                  uri="https://i.pinimg.com/564x/e9/d4/97/e9d49723d00cbb642dd0817db861af84.jpg"
+                  nameProduct="1 hour use Maker"
                   costProduct={2}
                   reactCount={123}
-                  typeProduct='Ticket'
+                  typeProduct="Ticket"
                 />
               </HStack>
             </ScrollView>
           </Box>
           <Box px="5" position="absolute" bottom="40px">
-            <Text color="#FFFFFF"
-              fontSize="4xl"
-              fontWeight="700" mb="2">
+            <Text color="#FFFFFF" fontSize="4xl" fontWeight="700" mb="2">
               Lastest Collection
             </Text>
-            <ScrollView
-              h="140px"
-              showsVerticalScrollIndicator={false}>
+            <ScrollView h="140px" showsVerticalScrollIndicator={false}>
               <ListProductCollection
                 uri="https://i.pinimg.com/564x/e9/d4/97/e9d49723d00cbb642dd0817db861af84.jpg"
-                nameProduct='1 hour use MetalShop'
+                nameProduct="1 hour use MetalShop"
                 costProduct={10}
                 reactCount={16}
-                typeProduct='Ticket'
+                typeProduct="Ticket"
               />
               <ListProductCollection
-                uri='https://sc04.alicdn.com/kf/U0c6c7fa9609d4ecda336bfd114d6a3f0o.jpeg'
-                nameProduct='Pepsi'
+                uri="https://sc04.alicdn.com/kf/U0c6c7fa9609d4ecda336bfd114d6a3f0o.jpeg"
+                nameProduct="Pepsi"
                 costProduct={3}
                 reactCount={54}
-                typeProduct='Drink'
+                typeProduct="Drink"
               />
             </ScrollView>
           </Box>
         </Flex>
       </Box>
     </NativeBaseProvider>
-  )
+  );
 }

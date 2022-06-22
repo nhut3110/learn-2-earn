@@ -34,17 +34,17 @@ const SwipeView = (props: Props) => {
   const panGesture = useAnimatedGestureHandler<PanGestureHandlerGestureEvent>({
     onActive: (event) => {
       translateX.value = Math.max(-128, Math.min(0, event.translationX));
-      console.log("swipe");
+      // console.log("swipe");
     },
     onEnd: () => {
       const shouldBeDismissed = translateX.value < SWIPE_THRESHOLD;
       if (shouldBeDismissed) {
-        console.log("swipe fail");
+        // console.log("swipe fail");
         translateX.value = withTiming(-SCREEN_WIDTH);
         onSwipeLeft && runOnJS(onSwipeLeft)();
       } else {
         translateX.value = withTiming(0);
-        console.log("swipe end");
+        // console.log("swipe end");
       }
     },
   });
