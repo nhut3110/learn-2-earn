@@ -28,8 +28,6 @@ const UserInventoryButton = (props: UserItems) => {
     return(
         <Box alignItems="center" justifyContent="center">
             <Button
-                //onPress={() => navigation.navigate('InventoryItem')}
-                // onPress={() => setShowModal(true)}
                 onPress={props.onClick}
                 variant="ghost"
                 size='sm'

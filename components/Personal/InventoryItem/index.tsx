@@ -25,7 +25,7 @@ const InventoryItemScreen = (props: any) => {
       <HStack space={1} ml="-2" mt="1">
         <ChevronLeftIcon size="6" color="#FFFFFF"/> 
         <Text color="#FFFFFF" fontSize="2xl" fontWeight="600" mt="-1.5" >
-           Item Info
+           Inventory
         </Text>
       </HStack>
     </Pressable>

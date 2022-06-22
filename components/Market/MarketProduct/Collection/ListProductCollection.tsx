@@ -31,6 +31,7 @@ interface ProductInfo {
   costProduct: number;
   reactCount: number;
   typeProduct: string;
+  onClick(): void;
 }
 
 const ProductCollection = (props: ProductInfo) => {
@@ -39,13 +40,14 @@ const ProductCollection = (props: ProductInfo) => {
   const [showModal2, setShowModal2] = useState(false);
   return (
     <Box>
-      <Button h="120px" borderRadius="15"
+      <Button
+        onPress={props.onClick}
+        h="120px" borderRadius="15"
         bg="#808080:alpha.40" borderWidth="1"
         borderColor="#ffff"
         justifyContent="flex-start"
         mb="10px"
-        ml="10px"
-        onPress={() => setShowModal(true)}>
+        ml="10px">
         <Flex direction="row" alignItems="center" justifyContent="space-between">
           <Flex direction="row" alignItems="flex-start" justifyContent="space-between" w="80%">
             <Image

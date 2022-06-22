@@ -22,13 +22,13 @@ import { useState } from "react";
 
 
 
-const ItemInfo = () => {
+const ItemInfoScreen = (props: any) => {
   return <Box>
-    <Pressable my="30px" ml="3" w="150px" bg="transparent" color="transparent">
+    <Pressable my="30px" ml="3" w="150px" bg="transparent" color="transparent" onPress={() => props?.navigation?.goBack()}>
       <HStack space={1} ml="-2" mt="1">
         <ChevronLeftIcon size="6" color="#FFFFFF"/> 
         <Text color="#FFFFFF" fontSize="2xl" fontWeight="600" mt="-1.5" >
-           Item Info
+           Back to market
         </Text>
       </HStack>
     </Pressable>
@@ -167,11 +167,12 @@ const BuyForm = () => {
   );
 }
 
-export default () => {
+export default 
+(props: any) => {
     return (
         <NativeBaseProvider>
         <Box bg="#171930" h="100%" w="100%">
-            <ItemInfo />
+            <ItemInfoScreen navigation={props.navigation}/>
             <BuyForm/>
         </Box>
         </NativeBaseProvider>

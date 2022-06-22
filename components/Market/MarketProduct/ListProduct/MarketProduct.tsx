@@ -32,12 +32,11 @@ interface ProductInfo {
   costProduct: number;
   reactCount: number;
   typeProduct: string;
+  onClick(): void; 
 }
 
-const MarketProduct = (props: any) => {
+const MarketProduct = (props: ProductInfo) => {
   const toast = useToast();
-  const [showModal, setShowModal] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
   return (
     <Center shadow={3}>
       <Image source={{
@@ -51,7 +50,10 @@ const MarketProduct = (props: any) => {
         borderRadius="32"
         mb="150px" />
       <Center position="absolute" bottom="16" mb="140px">
-        <Button position="absolute" right="-110" top="-190"
+        <Button 
+          // onPress={props.onClick}
+          position="absolute" 
+          right="-110" top="-190"
           bg="#808080:alpha.40" h="45px" w="100"
           borderWidth="1" borderColor="#ffff" borderRadius="50"
           onPress={() => toast.show({
@@ -73,6 +75,7 @@ const MarketProduct = (props: any) => {
           </HStack>
         </Button>
         <Button
+          onPress={props.onClick}
           position="absolute" px="3" py="2"
           bg="#808080:alpha.40" h="90" w="220"
           borderWidth="1" borderColor="#ffff" borderRadius="15">

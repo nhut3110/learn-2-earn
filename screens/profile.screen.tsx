@@ -12,13 +12,13 @@ import UserInventoryButton from '../components/Personal/UserInventory/UserInvent
 import NavBar from '@/components/NavBar/NavBar'
 import InventoryItemScreen from "../components/Personal/InventoryItem";
 
-export const PeronalScreen = (props: any) => {
+export const PersonalScreen = (props: any) => {
   return (
     <NativeBaseProvider>
       <Box bg="#171930" h="100%" w="100%">
         <PersonalHeader />
         <PersonalContent />
-        <Box position="absolute" bottom="10px" px="5px">
+        <Box position="absolute" bottom="0" px="5px">
           <Text
             ml="10px"
             fontSize="2xl"
@@ -26,9 +26,9 @@ export const PeronalScreen = (props: any) => {
             color="#FFFFFF">
             Inventory
           </Text>
-          <Box mt="10px" ml="10px">
+          <Box mt="5px" ml="10px">
             <ScrollView
-              h="130px"
+              h="150px"
               showsVerticalScrollIndicator={false}
             >
               <UserInventoryButton
@@ -79,7 +79,7 @@ const Stack = createNativeStackNavigator();
 export default function MainNavigation() {
   return (
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Peronal" component={PeronalScreen} />
+        <Stack.Screen name="Personal" component={PersonalScreen} />
         <Stack.Screen name="InventoryItemScreen" component={InventoryItemScreen} />
       </Stack.Navigator>
   );
