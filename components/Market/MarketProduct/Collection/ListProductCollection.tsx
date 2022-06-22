@@ -104,7 +104,7 @@ const ProductCollection = (props: ProductInfo) => {
         </Flex>
       </Button>
 
-      <Modal
+      {/* <Modal
         isOpen={showModal}
         onClose={() => setShowModal(false)}>
         <Modal.Content bg="#FFFFFF"
@@ -225,7 +225,7 @@ const ProductCollection = (props: ProductInfo) => {
             </Button>
           </Modal.Footer>
         </Modal.Content>
-      </Modal>
+      </Modal> */}
     </Box>
   )
 }

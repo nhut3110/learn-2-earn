@@ -1,26 +1,25 @@
 import React from "react";
 import { useState } from 'react';
-import {View} from 'react-native';
 import { 
-        Image, 
-        Text, 
-        Button, 
-        Modal,
-        Flex,
-        HStack,
-        VStack,
-        CheckIcon,
-        Box,
-        useToast
-      } from "native-base";
+    Image, 
+    Text, 
+    Button, 
+    Modal,
+    Flex,
+    HStack,
+    VStack,
+    CheckIcon,
+    Box,
+    useToast
+    } from "native-base";
 
-      interface UserItems {
-        uri?: string;
-        nameItem: string;
-        stockItem: string;
-        datePurchased: string;
-        useItemQR: string;
-      }
+    interface UserItems {
+    uri?: string;
+    nameItem: string;
+    stockItem: number;
+    datePurchased: string;
+    useItemQR: string;
+    }
 
 const UserInventoryButton = (props: UserItems) => {
     const toast = useToast();
@@ -29,13 +28,13 @@ const UserInventoryButton = (props: UserItems) => {
     return(
         <Box alignItems="center" justifyContent="center">
             <Button
-                    onPress={() => setShowModal(true)}
+                    // onPress={() => setShowModal(true)}
                     variant="ghost"
                     size='sm'
                     bg="#1E203B"
                     borderRadius="10" 
                     shadow={3}
-                    w="100%"
+                    w="99%"
                     mb="10px"
                     >
                     <Flex direction="row" alignItems="center" justifyContent="space-between" w="350px">
@@ -63,7 +62,7 @@ const UserInventoryButton = (props: UserItems) => {
                     </Flex>
                 </Button>  
             
-            <Modal 
+            {/* <Modal 
             isOpen={showModal} 
             onClose={() => setShowModal(false)}>
             <Modal.Content bg="#FFFFFF" 
@@ -156,7 +155,7 @@ const UserInventoryButton = (props: UserItems) => {
                     </Button>
                     </Modal.Footer>
                 </Modal.Content>
-            </Modal>
+            </Modal> */}
         </Box> 
     )
 }
