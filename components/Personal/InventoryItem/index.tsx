@@ -19,11 +19,9 @@ import {
   useToast } from "native-base";
 import { useState } from "react";
 
-
-
-const InventoryItem = () => {
+const InventoryItemScreen = (props: any) => {
   return <Box>
-    <Pressable my="30px" ml="3" w="150px" bg="transparent" color="transparent">
+    <Pressable my="30px" ml="3" w="150px" bg="transparent" color="transparent" onPress={() => props?.navigation?.goBack()}>
       <HStack space={1} ml="-2" mt="1">
         <ChevronLeftIcon size="6" color="#FFFFFF"/> 
         <Text color="#FFFFFF" fontSize="2xl" fontWeight="600" mt="-1.5" >
@@ -137,11 +135,12 @@ const UseForm = () => {
   );
 }
 
-    export default () => {
+    export default
+     (props: any) => {
         return (
           <NativeBaseProvider>
             <Box bg="#171930" h="100%" w="100%">
-              <InventoryItem />
+              <InventoryItemScreen navigation={props.navigation}/>
               <UseForm/>
             </Box>
           </NativeBaseProvider>

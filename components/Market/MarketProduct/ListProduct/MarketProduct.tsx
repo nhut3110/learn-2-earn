@@ -34,7 +34,7 @@ interface ProductInfo {
   typeProduct: string;
 }
 
-const MarketProduct = (props: ProductInfo) => {
+const MarketProduct = (props: any) => {
   const toast = useToast();
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
@@ -73,7 +73,6 @@ const MarketProduct = (props: ProductInfo) => {
           </HStack>
         </Button>
         <Button
-          onPress={() => setShowModal(true)}
           position="absolute" px="3" py="2"
           bg="#808080:alpha.40" h="90" w="220"
           borderWidth="1" borderColor="#ffff" borderRadius="15">
