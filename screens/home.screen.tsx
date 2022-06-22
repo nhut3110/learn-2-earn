@@ -97,7 +97,7 @@ const HomeScreen = () => {
                   }}>Activity History</Heading>
                 <ScrollView
                   maxW="100%"
-                  h="80"
+                  h="160px"
                   _contentContainerStyle={{
                     // px: "15px",
                     // px:"15px",

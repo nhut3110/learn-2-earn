@@ -54,7 +54,10 @@ export default function MarketScreen() {
             <Text color="#FFFFFF" fontSize="4xl" fontWeight="700" mb="2">
               Lastest Collection
             </Text>
-            <ScrollView h="140px" showsVerticalScrollIndicator={false}>
+            <ScrollView
+              h="160px"
+              mb="-25px"
+              showsVerticalScrollIndicator={false}>
               <ListProductCollection
                 uri="https://i.pinimg.com/564x/e9/d4/97/e9d49723d00cbb642dd0817db861af84.jpg"
                 nameProduct="1 hour use MetalShop"
