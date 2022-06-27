@@ -1,3 +1,7 @@
+
+import {
+  User, 
+} from "../../entities";
 export interface State {
-  user: any; 
+  user: User; 
 }; 

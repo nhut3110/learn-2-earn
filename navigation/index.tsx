@@ -18,18 +18,18 @@ export default function MainNavigation() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{
+            header: () => null,
+          }} />
+        <Stack.Screen
           name="Todo"
           component={TodoScreen}
           options={{
             header: () => null,
           }}
         />
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{
-            header: () => null,
-          }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
