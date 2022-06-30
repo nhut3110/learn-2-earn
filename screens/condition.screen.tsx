@@ -10,6 +10,7 @@ import {
     HStack,
     Link,
     Text, 
+    ScrollView,
     Icon
   } from "native-base";
 
@@ -19,6 +20,11 @@ const ConditionScreen = () => {
     return<Box backgroundColor="#171930" w="100%" h="100%">
         <Icon size={10} as={<Feather name="chevron-left"/>} mt="20" ml="-2"></Icon>
         
+        <VStack mt="5" h="700px" w="800" mx={"10"}>
+        <ScrollView 
+            showsVerticalScrollIndicator={false}
+            maxW="300" 
+            h="80">
         <Text fontSize="3xl" mx={2} mt={"5"} mb="2" color="white">What is Lorem Ipsum?</Text>
         <Text fontSize={"xl"} mx="2" mb="5" color={"white"}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five 
@@ -32,6 +38,9 @@ const ConditionScreen = () => {
          centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing 
          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </Text>
+        
+        </ScrollView>
+        </VStack>
     </Box>
 }
 

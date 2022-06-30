@@ -42,12 +42,12 @@ export default function MainNavigation() {
             header: () => null, 
           }}/> */}
 
-          {/* <Stack.Screen 
+          <Stack.Screen 
           name="Condition" 
           component={conditionScreen}
           options={{
             header: () => null, 
-          }}/> */}
+          }}/>
 
           {/* <Stack.Screen 
           name="Condition" 
@@ -56,12 +56,12 @@ export default function MainNavigation() {
             header: () => null, 
           }}/> */}
 
-          <Stack.Screen 
+          {/* <Stack.Screen 
           name="aboutScreen" 
           component={aboutScreen}
           options={{
             header: () => null, 
-          }}/>
+          }}/> */}
 
           {/* <Stack.Screen 
           name="Notification" 
