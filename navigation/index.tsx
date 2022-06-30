@@ -13,6 +13,7 @@ import passswordScreen from '@/screens/passswordScreen';
 import logoutScreen from '@/screens/logoutScreen';
 import conditionScreen from '@/screens/condition.screen';
 import helpScreen from '@/screens/help.screen';
+import aboutScreen from '@/screens/about.screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,9 +49,16 @@ export default function MainNavigation() {
             header: () => null, 
           }}/> */}
 
-          <Stack.Screen 
+          {/* <Stack.Screen 
           name="Condition" 
           component={helpScreen}
+          options={{
+            header: () => null, 
+          }}/> */}
+
+          <Stack.Screen 
+          name="aboutScreen" 
+          component={aboutScreen}
           options={{
             header: () => null, 
           }}/>
