@@ -20,7 +20,7 @@ const ConditionScreen = () => {
     return<Box backgroundColor="#171930" w="100%" h="100%">
         <Icon size={10} as={<Feather name="chevron-left"/>} mt="20" ml="-2"></Icon>
         
-        <VStack mt="5" h="700px" w="800" mx={"10"}>
+        <VStack mt="3" h="700px" w="800" mx={"10"}>
         <ScrollView 
             showsVerticalScrollIndicator={false}
             maxW="300" 
