@@ -6,6 +6,8 @@ const reducer = combineReducers<State>({
   user: UserReducer,
 });
 
-export const initState:State = null; 
+export const initState:State = {
+  user: null
+}; 
 
 export default reducer;

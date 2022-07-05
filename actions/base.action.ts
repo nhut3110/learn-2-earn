@@ -5,7 +5,7 @@ import { RegistryProvider } from "../providers/registry.provider";
 
 export type NetworkOptions = {
   networkType?: string;
-  body?: any; 
+  data?: any; 
   params?: any; 
   method: string; 
 } & RequestInit;
@@ -29,6 +29,7 @@ export class BaseAction {
     return this.networkProvider.request<T>(
       endPoint, {
         ...options, 
+        body: options.data,
         headers: {
           Authorization: `Bearer ${authTokenFromStorage}`,
         }

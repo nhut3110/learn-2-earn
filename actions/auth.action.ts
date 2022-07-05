@@ -9,7 +9,7 @@ export class AuthAction extends BaseAction {
     return this.networkProvider.request<LoginResponse>(
       "/auth/login", {
         method: "POST",
-        body: { username, password },
+        data: { username, password },
       }
     );
   }
