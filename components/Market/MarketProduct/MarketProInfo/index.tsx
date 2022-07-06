@@ -23,7 +23,6 @@ import {
 } from "native-base";
 import { Inventory } from "../../../../entities";
 import { getInventoryAction } from "../../../../actions";
-import { AxiosError } from "axios"
 
 
 const ItemInfoScreen = (props: any) => {

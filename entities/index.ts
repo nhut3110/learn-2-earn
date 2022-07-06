@@ -30,6 +30,7 @@ export enum TodoStatus {
 }
 
 export class Todo {
+  _id: string;
   title: string;
   desc: string;
   userId: string;

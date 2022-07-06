@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Svg, { Circle } from 'react-native-svg';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
+import { StyleSheet, View } from 'react-native';
 import { Flex, Icon, Text, Spacer } from 'native-base';
 import CircularProgress from 'react-native-circular-progress-indicator';
 import {
@@ -8,7 +8,10 @@ import {
 } from "@expo/vector-icons";
 
 const CircularProgressBar = () => {
-  const val: number = 120;
+  const { user } = useSelector((state: any) => state);
+  
+  const val: number = useMemo(() => user.balance, [user.balance]);
+  
   const color: string = (val < 100) ? "#2a9d8f"
     : (val < 200) ? "#e9c46a"
       : (val < 300) ? "#f4a261"

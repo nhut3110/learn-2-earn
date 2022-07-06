@@ -1,16 +1,5 @@
-import { createDrawerNavigator } from "@react-navigation/drawer";
-// import ActivityScreen from "./screens/todo-screen";
-import Sidebar from "./todo-components/sidebar";
 import { Ionicons } from "@expo/vector-icons";
-import React, { useCallback, useState } from "react";
-import {
-  Formik,
-  FormikHelpers,
-  FormikProps,
-  Form,
-  Field,
-  FieldProps,
-} from "formik";
+import { useCallback, useState, useEffect } from "react";
 import {
   Icon,
   VStack,
@@ -22,12 +11,10 @@ import {
   Pressable,
   Input,
   useToast,
-  Modal,
   FormControl,
   Button,
   TextArea,
   Text,
-  Image,
   ScrollView,
 } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
@@ -38,9 +25,12 @@ import Masthead from "../../components/TodoScreen/masthead";
 import "react-native-get-random-values";
 import { nanoid } from "nanoid";
 import ActivityBox from "../../components/TodoScreen/activity-components/activity-box";
-import { NavigationContainer, RouteProp } from "@react-navigation/native";
+import { RouteProp } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { getTodoAction } from "../../actions";
+import { Todo, TodoStatus } from "../../entities";
+
 interface activityItem {
   activityName: string;
   owner: string;
@@ -89,6 +79,11 @@ function MainScreen({ navigation }: { navigation: any }) {
   const toast = useToast();
   const [showModal, setShowModal] = useState(false);
   const [showSubmitForm, setSubmitForm] = useState(false);
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const todoAction = getTodoAction();
+
+
   const dataActivity = [
     {
       uri: "https://images.wallpaperscraft.com/image/single/ocean_beach_aerial_view_134429_2560x1440.jpg",
@@ -146,39 +141,52 @@ function MainScreen({ navigation }: { navigation: any }) {
   const [data, setData] = useState(initialData);
   const [editingItemId, setEditingItemId] = useState<string | null>(null);
 
-  const handleToggleTaskItem = useCallback((item) => {
-    setData((prevData) => {
-      const newData = [...prevData];
-      const index = prevData.indexOf(item);
-      newData[index] = {
-        ...item,
-        done: !item.done,
-      };
-      return newData;
-    });
+  const handleToggleTaskItem = useCallback(async (item) => {
+    await todoAction.updateTodo(
+      item._id,
+      {
+        status: item.status === TodoStatus.processing 
+              ? TodoStatus.done 
+              : TodoStatus.processing
+      }
+    )
+
+    handleGetTodos();
   }, []);
-  const handleChangeTaskItemSubject = useCallback((item, newSubject) => {
-    setData((prevData) => {
-      const newData = [...prevData];
-      const index = prevData.indexOf(item);
-      newData[index] = {
-        ...item,
-        subject: newSubject,
-      };
-      return newData;
-    });
+  
+  const handleChangeTaskItemSubject = useCallback(async (item, newSubject) => {
+    const newTodo = await todoAction.updateTodo(
+      item._id,
+      { title: newSubject }
+    )
+    console.log(newTodo);
+    handleGetTodos();
   }, []);
-  const handleFinishEditingTaskItem = useCallback((_item) => {
-    setEditingItemId(null);
+  
+  const handleFinishEditingTaskItem = useCallback(async (item: Todo) => {
+    console.log(item);
+    // handleChangeTaskItemSubject(item);
   }, []);
+  
   const handlePressTaskItemLabel = useCallback((item) => {
     setEditingItemId(item.id);
   }, []);
+  
   const handleRemoveItem = useCallback((item) => {
     setData((prevData) => {
       const newData = prevData.filter((i) => i !== item);
       return newData;
     });
+  }, []);
+
+  const handleGetTodos = async () => {
+    const todos = await todoAction.getTodos();
+
+    setTodos(todos);
+  }
+
+  useEffect(() => {
+    handleGetTodos();
   }, []);
 
   return (
@@ -187,11 +195,7 @@ function MainScreen({ navigation }: { navigation: any }) {
       bg={useColorModeValue("#171930", "primary.900")}
       w="full"
     >
-      {/* <Box bg="purple.500"></Box> */}
-      {/* <Masthead title="What's up?"> */}
       <NavBar title="" />
-      {/* </Masthead> */}
-      {/* <NavBar title="Todo List"/> */}
       <Heading p={4} color={useColorModeValue("white", "black")} size={"xl"}>
         {" "}
         Activity Board
@@ -231,7 +235,6 @@ function MainScreen({ navigation }: { navigation: any }) {
               />
             </Pressable>
           )}
-          // numColumns={numCol}
         ></FlatList>
       </Box>
       <VStack flex={1} bg={useColorModeValue("#171930", "primary.900")}>
@@ -239,7 +242,7 @@ function MainScreen({ navigation }: { navigation: any }) {
           Todo List
         </Heading>
         <TaskList
-          data={data}
+          data={todos}
           onToggleItem={handleToggleTaskItem}
           onChangeSubject={handleChangeTaskItemSubject}
           onFinishEditing={handleFinishEditingTaskItem}
@@ -367,8 +370,6 @@ function DetailScreen({ navigation, route }: Props) {
     </>
   );
 }
-
-const Drawer = createDrawerNavigator();
 
 const Stack = createNativeStackNavigator();
 const App = () => {

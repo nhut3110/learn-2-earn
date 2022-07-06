@@ -6,6 +6,7 @@ import {
 } from "react-native-gesture-handler";
 import TaskItem from "./task-item";
 import { makeStyledComponent } from "../utils/styled";
+import { Todo, TodoStatus } from "../../../entities";
 
 const StyledView = makeStyledComponent(View);
 const StyledScrollView = makeStyledComponent(ScrollView);
@@ -17,24 +18,24 @@ interface TaskItemData {
 }
 
 interface TaskListProps {
-  data: Array<TaskItemData>;
+  data: Todo[];
   editingItemId: string | null;
-  onToggleItem: (item: TaskItemData) => void;
-  onChangeSubject: (item: TaskItemData, newSubject: string) => void;
-  onFinishEditing: (item: TaskItemData) => void;
-  onPressLabel: (item: TaskItemData) => void;
-  onRemoveItem: (item: TaskItemData) => void;
+  onToggleItem: (item: Todo) => void;
+  onChangeSubject: (item: Todo, newSubject: string) => void;
+  onFinishEditing: (item: Todo) => void;
+  onPressLabel: (item: Todo) => void;
+  onRemoveItem: (item: Todo) => void;
 }
 
 interface TaskItemProps
   extends Pick<PanGestureHandlerProps, "simultaneousHandlers"> {
-  data: TaskItemData;
+  data: Todo;
   isEditing: boolean;
-  onToggleItem: (item: TaskItemData) => void;
-  onChangeSubject: (item: TaskItemData, newSubject: string) => void;
-  onFinishEditing: (item: TaskItemData) => void;
-  onPressLabel: (item: TaskItemData) => void;
-  onRemove: (item: TaskItemData) => void;
+  onToggleItem: (item: Todo) => void;
+  onChangeSubject: (item: Todo, newSubject: string) => void;
+  onFinishEditing: (item: Todo) => void;
+  onPressLabel: (item: Todo) => void;
+  onRemove: (item: Todo) => void;
 }
 
 export const AnimatedTaskItem = (props: TaskItemProps) => {
@@ -87,8 +88,8 @@ export const AnimatedTaskItem = (props: TaskItemProps) => {
     >
       <TaskItem
         simultaneousHandlers={simultaneousHandlers}
-        subject={data.subject}
-        isDone={data.done}
+        subject={data.title}
+        isDone={data.status === TodoStatus.done}
         isEditing={isEditing}
         onToggleCheckbox={handleToggleCheckbox}
         onChangeSubject={handleChangeSubject}
@@ -117,10 +118,10 @@ export default function TaskList(props: TaskListProps) {
       <AnimatePresence>
         {data.map((item) => (
           <AnimatedTaskItem
-            key={item.id}
+            key={item._id}
             data={item}
             simultaneousHandlers={refScrollView}
-            isEditing={item.id === editingItemId}
+            isEditing={item._id === editingItemId}
             onToggleItem={onToggleItem}
             onChangeSubject={onChangeSubject}
             onFinishEditing={onFinishEditing}

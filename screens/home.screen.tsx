@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import { useMemo,  useEffect} from 'react';
+import { useDispatch } from "react-redux";
 import {
   NativeBaseProvider,
   Box,
@@ -16,9 +17,9 @@ import {
   AntDesign,
 } from "@expo/vector-icons";
 
-import NavBar from '../components/NavBar/NavBar';
 import ProgressBar from '../components/ProgressBar/ProgressBar';
 import HistoryButton, { TransactionHistory } from '../components/HistoryButton/HistoryButton';
+import { getUserAction } from "../actions/";
 
 const LinearGradient = require("expo-linear-gradient").LinearGradient;
 const config = {
@@ -28,6 +29,9 @@ const config = {
 };
 
 const HomeScreen = () => {
+  const userAction = getUserAction();
+  const dispatch = useDispatch();
+
   const historyData = useMemo<TransactionHistory[]>(() => [
     {
       tsType: 'Receive',
@@ -59,6 +63,13 @@ const HomeScreen = () => {
     },
   ], []);
 
+  useEffect(() => {
+    (async () => {
+      const user = await userAction.getProfile();
+      dispatch({ type: "SET_USER", payload: user });
+    })();
+  }, []);
+
   return (
     <NativeBaseProvider config={config}>
       <Box w="100%" h="100%" alignSelf="center" backgroundColor="#171930">
@@ -75,7 +86,11 @@ const HomeScreen = () => {
                   }}>Your Credits</Heading>
                 <Spacer />
                 <Pressable>
-                  <Icon mb="1" as={<AntDesign name={"creditcard"} />} color="white" size="8" />
+                  <Icon mb="1" as={
+                    <AntDesign 
+                      name={"creditcard"} />
+                    } 
+                    color="white" size="8" />
                 </Pressable>
                 <Pressable>
                   <Icon mb="1" ml="5" as={<AntDesign name={"plus"} />} color="white" size="8" />

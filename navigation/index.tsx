@@ -9,6 +9,16 @@ import HomeScreen from "./home.navigation";
 import PersonalScreen from '@/screens/profile.screen';
 import MarketScreen from '@/screens/market.screen';
 import TodoScreen from "@/screens/activity.screen";
+import FinalScreen from '@/screens/final.screen';
+
+import updatedScreen from '@/screens/updated.screen';
+// import NotificationScreen from '@/screens/Notification.screen';
+import passswordScreen from '@/screens/passswordScreen';
+
+import logoutScreen from '@/screens/logoutScreen';
+import conditionScreen from '@/screens/condition.screen';
+import helpScreen from '@/screens/help.screen';
+import aboutScreen from '@/screens/about.screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +32,7 @@ export default function MainNavigation() {
           options={{
             header: () => null,
           }} />
-          <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen
           name="Todo"
           component={TodoScreen}
@@ -30,6 +40,65 @@ export default function MainNavigation() {
             header: () => null,
           }}
         />
+            
+          
+          {/* <Stack.Screen 
+          name="Final" 
+          component={FinalScreen}
+          options={{
+            header: () => null, 
+          }}/> */}
+          
+          {/* <Stack.Screen 
+          name="Updated" 
+          component={updatedScreen}
+          options={{
+            header: () => null, 
+          }}/> */}
+
+          <Stack.Screen 
+          name="Condition" 
+          component={conditionScreen}
+          options={{
+            header: () => null, 
+          }}/>
+
+          {/* <Stack.Screen 
+          name="Condition" 
+          component={helpScreen}
+          options={{
+            header: () => null, 
+          }}/> */}
+
+          {/* <Stack.Screen 
+          name="aboutScreen" 
+          component={aboutScreen}
+          options={{
+            header: () => null, 
+          }}/> */}
+
+          {/* <Stack.Screen 
+          name="Notification" 
+          component={NotificationScreen}
+          options={{
+            header: () => null, 
+          }}/> */}
+{/* 
+          <Stack.Screen 
+          name="passwordScreen" 
+          component={passswordScreen}
+          options={{
+            header: () => null, 
+          }}/> */}
+
+          {/* <Stack.Screen 
+          name="logoutScreen" 
+          component={logoutScreen}
+          options={{
+            header: () => null, 
+          }}/> */}
+          
+        {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

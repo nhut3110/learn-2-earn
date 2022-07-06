@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import {
   Icon,
   VStack,
@@ -25,6 +25,8 @@ import { nanoid } from "nanoid";
 import ActivityBox from "../components/TodoScreen/activity-components/activity-box";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { getTodoAction } from "../actions";
+import { Todo } from "../entities";
 
 interface activityItem {
   activityName: string;
@@ -47,10 +49,13 @@ const initialData = [
   },
 ];
 
-export default function MainScreen({ navigation }) {
+export default function MainScreen() {
   const toast = useToast();
   const [showModal, setShowModal] = useState(false);
   const [showSubmitForm, setSubmitForm] = useState(false);
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const todoAction = getTodoAction();
+
   const dataActivity = [
     {
       uri: "https://images.wallpaperscraft.com/image/single/ocean_beach_aerial_view_134429_2560x1440.jpg",
@@ -97,6 +102,7 @@ export default function MainScreen({ navigation }) {
       time: "31/5/2022",
     },
   ];
+
   const styles = {
     wrapper: {
       justifyContent: "flex-start",
@@ -141,6 +147,19 @@ export default function MainScreen({ navigation }) {
       return newData;
     });
   }, []);
+
+  const handleGetTodos = async () => {
+    
+    const todos = await todoAction.getTodos();
+    console.log('todos data', todos);
+    setTodos(todos);
+  }
+
+  useEffect(() => {
+    handleGetTodos();
+  }, []);
+
+  console.log("get todos");
 
   return (
     <AnimatedColorBox
@@ -295,7 +314,7 @@ export default function MainScreen({ navigation }) {
               </Modal>
             </>
           )}
-          // numColumns={numCol}
+        // numColumns={numCol}
         ></FlatList>
       </Box>
       <VStack flex={1} bg={useColorModeValue("#171930", "primary.900")}>
@@ -303,7 +322,7 @@ export default function MainScreen({ navigation }) {
           Todo List
         </Heading>
         <TaskList
-          data={data}
+          data={todos}
           onToggleItem={handleToggleTaskItem}
           onChangeSubject={handleChangeTaskItemSubject}
           onFinishEditing={handleFinishEditingTaskItem}
@@ -335,7 +354,3 @@ export default function MainScreen({ navigation }) {
     </AnimatedColorBox>
   );
 }
-
-const DetailScreen = ({ navigation, route }) => {
-  return <Text>{route}</Text>;
-};
