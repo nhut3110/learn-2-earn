@@ -1,4 +1,4 @@
-import { AsyncStorage } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NetworkProvider } from "../providers/network.provider";
 import { StorageProvider } from "../providers/storage.provider";
 import { RegistryProvider } from "../providers/registry.provider";
@@ -8,7 +8,8 @@ export type NetworkOptions = {
   data?: any; 
   params?: any; 
   method: string; 
-} & RequestInit;
+  headers?: any;
+};
 
 export class BaseAction {
   protected readonly networkProvider: NetworkProvider;
@@ -29,7 +30,7 @@ export class BaseAction {
     return this.networkProvider.request<T>(
       endPoint, {
         ...options, 
-        body: options.data,
+        data: options.data,
         headers: {
           Authorization: `Bearer ${authTokenFromStorage}`,
         }

@@ -1,9 +1,9 @@
-import { AsyncStorageStatic } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class StorageProvider {
-  private readonly storageInstance: AsyncStorageStatic;
+  private readonly storageInstance: typeof AsyncStorage;
 
-  constructor(storage: AsyncStorageStatic) {
+  constructor(storage: typeof AsyncStorage) {
     this.storageInstance = storage; 
   }
 

@@ -14,8 +14,7 @@ import {
   Center,
 } from "native-base";
 import { useForm } from "react-hook-form";
-import { AuthAction } from "../actions/auth.action";
-import { UserAction } from "../actions/user.action";
+import { getAuthAction, getUserAction } from "../actions";
 import { SET_USER } from "../app-redux/constant/actions";
 
 interface ScreenProps {
@@ -34,31 +33,36 @@ const LoginScreen: React.FC<ScreenProps> = ({
 
   const watchFields = watch(); 
 
-  const authAction = new AuthAction();
+  const authAction = getAuthAction();
 
-  const userAction = new UserAction();
+  const userAction = getUserAction();
 
   const handleLogin = async (data: {
     username: string, 
     password: string, 
   }) =>  {
     const loginResponse = await authAction.login(data.username, data.password);
-    if (loginResponse.accessToken) {
-      const user = await userAction.getProfile();
-      if (user) {
-        console.log("user info", user);
-        dispatch({ type: SET_USER, payload: user });
-        navigation.navigate("Home");
-      }
+    if (loginResponse.access_token) {
+      try {
+        const user = await userAction.getProfile();
+        if (user) {
+          dispatch({ type: SET_USER, payload: user });
+          navigation.navigate("Home");
+        }
+      } catch {}
     }
   }
 
   useEffect(() => {
     (async () => {
-      const user = await userAction.getProfile();
-      if (user) {
-        dispatch({ type: SET_USER, payload: user });
-        navigation.navigate("Home");
+      try {
+        const user = await userAction.getProfile();
+        if (user) {
+          dispatch({ type: SET_USER, payload: user });
+          navigation.navigate("Home");
+        }
+      } catch (err) {
+        handleLogin({ username: "thinhvnuk", password: "123456" });
       }
     })(); 
   }, []);

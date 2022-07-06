@@ -1,5 +1,5 @@
 export interface LoginResponse {
-  accessToken: string;
+  access_token: string;
 }
 
 export enum UserRole {
@@ -70,4 +70,19 @@ export enum ActivityAuditLogStatus {
 export class ActivityAuditLog {
   activityId: string;
   userId: string;
+}
+
+export enum InventoryType {
+  ticket = 'INVENTORY_TYPE::TICKET',
+  drink = 'INVENTORY_TYPE::DRINK',
+}
+
+export class Inventory {
+  title: string;
+  image: string;
+  price: number;
+  type: InventoryType;
+  interactions: string[];
+  amount: number;
+  _id: string;
 }

@@ -1,7 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   NativeBaseProvider,
-  Flex,
   ScrollView,
   Box,
   Text
@@ -9,10 +9,11 @@ import {
 import PersonalHeader from '../components/Personal/PersonalHeader/PersonalHeader'
 import PersonalContent from '../components/Personal/PersonalContent/PersonalContent'
 import UserInventoryButton from '../components/Personal/UserInventory/UserInventoryButton'
-import NavBar from '@/components/NavBar/NavBar'
 import InventoryItemScreen from "../components/Personal/InventoryItem";
 
 export const PersonalScreen = (props: any) => {
+  const { user } = useSelector((state: any ) => state);
+  
   return (
     <NativeBaseProvider>
       <Box bg="#171930" h="100%" w="100%">
