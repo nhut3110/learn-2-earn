@@ -42,9 +42,9 @@ const ItemInfoScreen = (props: any) => {
   return (
     <Box>
       <Pressable my="30px" ml="3" w="150px" bg="transparent" color="transparent" onPress={() => props?.navigation?.goBack()}>
-        <HStack space={1} ml="-2" mt="1">
+        <HStack space={2}  mt="5" w="100%">
           <ChevronLeftIcon size="6" color="#FFFFFF" />
-          <Text color="#FFFFFF" fontSize="2xl" fontWeight="600" mt="-1.5" >
+          <Text color="#FFFFFF" fontSize="xl" fontWeight="600" mt="-1.5" >
             Back to market
           </Text>
         </HStack>
