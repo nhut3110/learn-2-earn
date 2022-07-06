@@ -22,4 +22,23 @@ export class TodoAction extends BaseAction {
       }
     );
   }
+
+  async deleteTodo(todoId: string): Promise<any> {
+    return this.requestWithCredential<any>(
+      `/todo/${todoId}`, {
+        method: "DELETE",
+      }
+    );
+  }
+
+  async addTodo(): Promise<Todo> {
+    return this.requestWithCredential<Todo>(
+      `/todo/`, {
+        method: "POST",
+        data: {
+          title: "Empty todo",
+        }
+      }
+    );
+  }
 }

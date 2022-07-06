@@ -4,7 +4,6 @@ import TodoAndActivityScreen from "@/components/TodoScreen/index";
 export default function TodoScreen() {
   return (
     <TodoContainer>
-      {/* <TodoMainScreen /> */}
       <TodoAndActivityScreen />
     </TodoContainer>
   );

@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect, useMemo } from "react";
 import {
   Icon,
   VStack,
@@ -31,6 +31,8 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { getTodoAction } from "../../actions";
 import { Todo, TodoStatus } from "../../entities";
 
+var editTimeOut:any;
+ 
 interface activityItem {
   activityName: string;
   owner: string;
@@ -142,52 +144,82 @@ function MainScreen({ navigation }: { navigation: any }) {
   const [editingItemId, setEditingItemId] = useState<string | null>(null);
 
   const handleToggleTaskItem = useCallback(async (item) => {
-    await todoAction.updateTodo(
-      item._id,
-      {
-        status: item.status === TodoStatus.processing 
-              ? TodoStatus.done 
-              : TodoStatus.processing
-      }
-    )
-
-    handleGetTodos();
+    try {
+      await todoAction.updateTodo(
+        item._id, {
+          status: item.status === TodoStatus.processing 
+            ? TodoStatus.done 
+            : TodoStatus.processing
+        }
+      )
+        
+      await handleGetTodos();
+  
+      setEditingItemId(null);
+    } catch (err) {
+      console.log("Error when toggle todo ", err);
+    }
   }, []);
   
   const handleChangeTaskItemSubject = useCallback(async (item, newSubject) => {
-    const newTodo = await todoAction.updateTodo(
-      item._id,
-      { title: newSubject }
-    )
-    console.log(newTodo);
-    handleGetTodos();
+    editTimeOut && clearTimeout(editTimeOut);
+    editTimeOut = setTimeout(async ()=>{
+      await todoAction.updateTodo(
+        item._id,
+        { title: newSubject }
+      )
+      
+      await handleGetTodos();
+
+      setEditingItemId(null);
+    }, 500);
   }, []);
   
   const handleFinishEditingTaskItem = useCallback(async (item: Todo) => {
-    console.log(item);
-    // handleChangeTaskItemSubject(item);
+    setEditingItemId(null);
   }, []);
   
   const handlePressTaskItemLabel = useCallback((item) => {
-    setEditingItemId(item.id);
+    setEditingItemId(item._id);
   }, []);
   
-  const handleRemoveItem = useCallback((item) => {
-    setData((prevData) => {
-      const newData = prevData.filter((i) => i !== item);
-      return newData;
-    });
+  const handleRemoveItem = useCallback(async (item) => {
+    await todoAction.deleteTodo(item._id);
+
+    await handleGetTodos();
   }, []);
 
-  const handleGetTodos = async () => {
+  const handleAddTodo = useCallback(async () => {
+    await todoAction.addTodo();  
+
+    handleGetTodos();
+
+    setEditingItemId(null);
+  }, []);
+
+  const handleGetTodos = useCallback(async () => {
     const todos = await todoAction.getTodos();
 
-    setTodos(todos);
-  }
+    setTodos(() => todos);
+  }, [todos]);
 
   useEffect(() => {
     handleGetTodos();
   }, []);
+
+  const taskListContainer = useMemo(() => {
+    return (
+      <TaskList
+        data={todos}
+        onToggleItem={handleToggleTaskItem}
+        onChangeSubject={handleChangeTaskItemSubject}
+        onFinishEditing={handleFinishEditingTaskItem}
+        onPressLabel={handlePressTaskItemLabel}
+        onRemoveItem={handleRemoveItem}
+        editingItemId={editingItemId}
+      />
+    );
+  }, [todos, editingItemId]);
 
   return (
     <AnimatedColorBox
@@ -241,15 +273,7 @@ function MainScreen({ navigation }: { navigation: any }) {
         <Heading p={4} color={useColorModeValue("white", "black")} size={"xl"}>
           Todo List
         </Heading>
-        <TaskList
-          data={todos}
-          onToggleItem={handleToggleTaskItem}
-          onChangeSubject={handleChangeTaskItemSubject}
-          onFinishEditing={handleFinishEditingTaskItem}
-          onPressLabel={handlePressTaskItemLabel}
-          onRemoveItem={handleRemoveItem}
-          editingItemId={editingItemId}
-        />
+        {taskListContainer}
       </VStack>
       <Fab
         position="absolute"
@@ -258,18 +282,7 @@ function MainScreen({ navigation }: { navigation: any }) {
         icon={<Icon color="white" as={<AntDesign name="plus" />} size="sm" />}
         colorScheme={useColorModeValue("blue", "darkBlue")}
         bg={useColorModeValue("purple.600", "emerald.500")}
-        onPress={() => {
-          const id = nanoid(10);
-          setData([
-            {
-              id,
-              subject: "",
-              done: false,
-            },
-            ...data,
-          ]);
-          setEditingItemId(id);
-        }}
+        onPress={handleAddTodo}
       />
     </AnimatedColorBox>
   );

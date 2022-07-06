@@ -110,7 +110,7 @@ const TaskItem = (props: Props) => {
         {isEditing ? (
           <Input
             placeholder="Empty Task"
-            value={subject}
+            defaultValue={subject}
             variant="unstyled"
             fontSize={19}
             px={1}
