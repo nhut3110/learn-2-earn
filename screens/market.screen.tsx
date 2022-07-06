@@ -51,7 +51,7 @@ export const MarketScreen = (props: any) => {
                     typeProduct="Drink"
                     onClick={() => {
                       console.log("onclick item");
-                      props?.navigation?.navigate("ItemInfoScreen")
+                      props?.navigation?.navigate("ItemInfoScreen", { id: item._id })
                     }}
                   />
                 ))}
@@ -77,7 +77,7 @@ export const MarketScreen = (props: any) => {
                   typeProduct="Drink"
                   onClick={() => {
                     console.log("onclick item");
-                    props?.navigation?.navigate("ItemInfoScreen")
+                    props?.navigation?.navigate("ItemInfoScreen", { id: item._id })
                   }}
                 />
               ))}

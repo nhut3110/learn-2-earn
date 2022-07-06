@@ -1,6 +1,10 @@
 import { BaseAction } from "./base.action";
-import { Inventory } from "../entities";
 import { InteractInventoryDto } from "../dto/interact-inventory.dto";
+import { BuyInventoryDto } from "../dto/buy-inventory.dto";
+import { 
+  Inventory,
+  InventoryOwn
+} from "../entities";
 
 export class InventoryAction extends BaseAction {
   async getInventories(): Promise<Inventory[]> {
@@ -26,6 +30,24 @@ export class InventoryAction extends BaseAction {
       `/inventory/interact`, {
         method: "POST",
         data: interactInventoryDto,
+      }
+    );
+  }
+
+  async getUserInventories(): Promise<InventoryOwn[]> {
+    return this.requestWithCredential<InventoryOwn[]>(
+      `/inventory/user-inventories`, {
+        method: "GET",
+      }
+    );
+  }
+  async buyInventory(
+    buyInventoryDto: BuyInventoryDto
+  ): Promise<Inventory | null> {
+    return this.requestWithCredential<Inventory | null>(
+      `/inventory/buy-inventory`, {
+        method: "POST",
+        data: buyInventoryDto,
       }
     );
   }

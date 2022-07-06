@@ -4,8 +4,6 @@ import {
   Button,
   Pressable,
   Modal,
-  FormControl,
-  Input,
   Center,
   NativeBaseProvider,
   Box,
@@ -21,36 +19,31 @@ import {
 import { useState } from "react";
 
 const InventoryItemScreen = (props: any) => {
-  return <Box>
-    <Pressable my="30px" ml="3" w="150px" bg="transparent" color="transparent" onPress={() => props?.navigation?.goBack()}>
-      <HStack space={1} ml="-2" mt="1">
-        <ChevronLeftIcon size="6" color="#FFFFFF" />
-        <Text color="#FFFFFF" fontSize="2xl" fontWeight="600" mt="-1.5" >
-          Inventory
-        </Text>
-      </HStack>
-    </Pressable>
-    <Center>
-      <Image
-        source={{
-          uri:
-            "https://sc04.alicdn.com/kf/U0c6c7fa9609d4ecda336bfd114d6a3f0o.jpeg"
-        }}
-        alt="Alternate Text" size="350px" borderRadius="20" />
-    </Center>
+  const { inventory } = props;
+  return (
+    <Box>
+      <Pressable my="30px" ml="3" w="150px" bg="transparent" color="transparent" onPress={() => props?.navigation?.goBack()}>
+        <HStack space={1} ml="-2" mt="1">
+          <ChevronLeftIcon size="6" color="#FFFFFF" />
+          <Text color="#FFFFFF" fontSize="2xl" fontWeight="600" mt="-1.5" >
+            Inventory
+          </Text>
+        </HStack>
+      </Pressable>
+      <Center>
+        <Image
+          source={{ uri: inventory?.image }}
+          alt="Alternate Text" size="350px" borderRadius="20" />
+      </Center>
 
-    <VStack mt="5" alignItems="center">
-      <Flex direction='row' alignItems="center" w="250px" justifyContent="space-between">
-        <Text fontSize='3xl' fontWeight="bold" color='#ffffff'>Pepsi</Text>
-        <Text fontSize='2xl' color='#ffffff'> x2</Text>
-      </Flex>
-
-      <Flex direction='row' alignItems="center" w="250px">
-        <Text fontSize='lg' fontWeight="600" color='#ffffff'>Date of purchase:</Text>
-        <Text fontSize='md' color='#ffffff'>{"  "}21/02/2012</Text>
-      </Flex>
-    </VStack>
-  </Box>;
+      <VStack mt="5" alignItems="center">
+        <Flex direction='row' alignItems="center" w="250px" justifyContent="space-between">
+          <Text fontSize='3xl' fontWeight="bold" color='#ffffff'>{inventory?.title}</Text>
+          <Text fontSize='2xl' color='#ffffff'> x{inventory?.ownedAmount} </Text>
+        </Flex>
+      </VStack>
+    </Box>
+  );
 };
 
 const UseForm = () => {
@@ -138,10 +131,14 @@ const UseForm = () => {
 
 export default
   (props: any) => {
+    console.log(props.route.params.inventoryOwn);
     return (
       <NativeBaseProvider>
         <Box bg="#171930" h="100%" w="100%">
-          <InventoryItemScreen navigation={props.navigation} />
+          <InventoryItemScreen
+            inventory={props.route.params.inventoryOwn}
+            navigation={props.navigation}
+          />
           <UseForm />
         </Box>
       </NativeBaseProvider>

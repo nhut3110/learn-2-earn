@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   NativeBaseProvider,
@@ -10,9 +10,24 @@ import PersonalHeader from '../components/Personal/PersonalHeader/PersonalHeader
 import PersonalContent from '../components/Personal/PersonalContent/PersonalContent'
 import UserInventoryButton from '../components/Personal/UserInventory/UserInventoryButton'
 import InventoryItemScreen from "../components/Personal/InventoryItem";
+import { getInventoryAction } from "../actions";
+import { InventoryOwn } from "../entities";
 
 export const PersonalScreen = (props: any) => {
   const { user } = useSelector((state: any ) => state);
+  const [useInventories, setInventories] = useState<InventoryOwn[]>([]);
+  
+  const inventoryAction = getInventoryAction(); 
+
+  const handleGetUserInventories = async () => {
+    const useInventories = await inventoryAction.getUserInventories();
+    console.log(useInventories);
+    setInventories(useInventories);
+  }
+
+  useEffect(() => {
+    handleGetUserInventories();
+  }, []);
   
   return (
     <NativeBaseProvider>
@@ -32,17 +47,20 @@ export const PersonalScreen = (props: any) => {
               h="150px"
               showsVerticalScrollIndicator={false}
             >
-              <UserInventoryButton
-                uri='https://i.pinimg.com/564x/e9/d4/97/e9d49723d00cbb642dd0817db861af84.jpg'
-                nameItem='Parking ticket'
-                stockItem={4}
-                datePurchased='25/05/2022'
-                useItemQR='https://baergbryce.files.wordpress.com/2011/09/1.jpeg' 
-                onClick={() => {
-                  console.log("onclick item");
-                  props?.navigation?.navigate("InventoryItemScreen")
-                }}/>
-              <UserInventoryButton
+              {useInventories.map((item, index) => (
+                <UserInventoryButton
+                  key={`user-inventory-item-${index}`}
+                  uri={item.image}
+                  nameItem={item.title}
+                  stockItem={item.ownedAmount}
+                  datePurchased='25/05/2022'
+                  useItemQR='https://baergbryce.files.wordpress.com/2011/09/1.jpeg' 
+                  onClick={() => {
+                    console.log("onclick item");
+                    props?.navigation?.navigate("InventoryItemScreen", { inventoryOwn: item })
+                  }}/>
+              ))}
+              {/* <UserInventoryButton
                 uri='https://sc04.alicdn.com/kf/U0c6c7fa9609d4ecda336bfd114d6a3f0o.jpeg'
                 nameItem='Pepsi'
                 stockItem={2}
@@ -63,7 +81,7 @@ export const PersonalScreen = (props: any) => {
                   console.log("onclick item");
                   props?.navigation?.navigate("InventoryItemScreen")
                 }}
-              />
+              /> */}
             </ScrollView>
           </Box>
         </Box>

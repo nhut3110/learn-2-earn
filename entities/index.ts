@@ -86,3 +86,17 @@ export class Inventory {
   amount: number;
   _id: string;
 }
+
+
+export enum InventoryStatus {
+  available = 'INVENTORY_STATUS::AVAILABLE',
+  used = 'INVENTORY_STATUS::USED',
+}
+export class InventoryAuditLog {
+  inventoryId: string;
+  userId: string;
+}
+
+export type InventoryOwn = Inventory & {
+  ownedAmount: number;
+};
